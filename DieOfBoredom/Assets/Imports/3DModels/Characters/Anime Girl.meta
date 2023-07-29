@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:DieOfBoredom/Assets/Imports/3DModels/Characters/PNJBoy.meta
+guid: 4e5b0ba5326082f4eaf10661792a01c3
+========
 guid: b24cc5ded18f3d64f990854903af9e26
+>>>>>>>> ba1428e770d778f27a779e718c0605c4d9b5bff6:DieOfBoredom/Assets/Imports/3DModels/Characters/Anime Girl.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
