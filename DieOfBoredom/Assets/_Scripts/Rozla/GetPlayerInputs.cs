@@ -7,22 +7,44 @@ public class GetPlayerInputs : MonoBehaviour
 {
     [SerializeField] InputActionAsset _playerInputs;
 
-    Vector2 moveInputs;
+    static Vector2 _moveInputs;
+
+    public static Vector2 MoveInputs
+    {
+        get
+        {
+            return _moveInputs;
+        }
+    }
+
+    static bool _crouchInput;
+
+    public static bool CrouchInput
+    {
+        get
+        {
+            return (_crouchInput);
+        }
+    }
 
     private void OnEnable() => _playerInputs.Enable();
     private void OnDisable() => _playerInputs.Disable();
 
+
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        moveInputs = _playerInputs.FindAction("Move").ReadValue<Vector2>();
+        _moveInputs = _playerInputs.FindAction("Move").ReadValue<Vector2>();
 
-        Debug.Log(moveInputs);
+        if (_playerInputs.FindAction("Crouch").WasPerformedThisFrame())
+        {
+            _crouchInput = !_crouchInput;
+        }
     }
 }
