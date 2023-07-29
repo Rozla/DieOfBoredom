@@ -7,6 +7,21 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: MAT_Fazwatch_Fred
+    second: {fileID: 2100000, guid: 2890d23931da55f4583b6d731cafe79e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MAT_GregoryEyeRefract
+    second: {fileID: 2100000, guid: 64b6798bee133414c942798348d7f382, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MAT_Gregory_Eye_Occlusion
+    second: {fileID: 2100000, guid: 40f2056e81e6f1b4f8571fd7897efbdf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: M_Gregory_Body
     second: {fileID: 2100000, guid: 2481ffbaec5acb24c8214d257dc39cf9, type: 2}
   - first:
