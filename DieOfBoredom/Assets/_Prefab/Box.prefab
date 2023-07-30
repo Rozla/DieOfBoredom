@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3719957763540616169}
   - component: {fileID: 9134510242358866249}
+  - component: {fileID: 4540045650488458685}
   m_Layer: 6
   m_Name: Box
   m_TagString: RingBox
@@ -31,7 +32,7 @@ Transform:
   m_Children:
   - {fileID: 4535931175763758859}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &9134510242358866249
 SphereCollider:
@@ -54,6 +55,18 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.4757917
   m_Center: {x: -0.07, y: 0.18, z: -0.02}
+--- !u!114 &4540045650488458685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2339989763309550169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a07863785e8f95d41a6d67f86b06be2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4535931175763629449
 PrefabInstance:
   m_ObjectHideFlags: 0

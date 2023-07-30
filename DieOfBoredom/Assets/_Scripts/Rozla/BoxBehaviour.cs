@@ -13,6 +13,19 @@ public class BoxBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
+    }
+
+    public void CheckGearLeft()
+    {
+        if (GearsManager._allGears.Count > 0)
+        {
+            Debug.Log("Il reste des engrenages");
+        }
+
+        if (GearsManager._allGears.Count == 0)
+        {
+            Debug.Log("C'est gagné");
+        }
     }
 }
