@@ -67,6 +67,9 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        Debug.Log(transform.rotation.y);
+
         OnStateUpdate();
 
         if(!_isSitting)
@@ -355,9 +358,16 @@ public class PlayerMovement : MonoBehaviour
         _canCheckArrow = false;
         _canStand = false;
 
+        _leftArrow.SetActive(false);
+        _rightArrow.SetActive(false);
+
         Vector3 currentPos = transform.position;
-        float offset = moveXValue > 0f ? ( 1f * 1.5f) : (- 1f * 1.5f);
+        float offset = moveXValue > 0f ? ( 1f * 1f) : (- 1f * 1f);
         Vector3 targetPos = new Vector3(transform.position.x + offset, transform.position.y, transform.position.z);
+
+        Quaternion currentRota = Quaternion.Euler(0f, 180f, 0f);
+        float offsetRota = moveXValue > 0f ? 90f : -90f;
+        Quaternion targetRota = Quaternion.Euler(0f, offsetRota, 0f);
 
         float timer = 0f;
         float maxTimer = 1f;
@@ -367,10 +377,16 @@ public class PlayerMovement : MonoBehaviour
         while( timer < maxTimer)
         {
             transform.position = Vector3.Lerp(currentPos, targetPos , timer / maxTimer);
+            transform.rotation = Quaternion.Slerp(currentRota, targetRota, timer / maxTimer);
 
             timer += Time.deltaTime;
             yield return null;
         }
+
+        _isSitting = false;
+        _playerCC.enabled = true;
+
+        TransitionToState(PlayerState.IDLE);
 
     }
 
