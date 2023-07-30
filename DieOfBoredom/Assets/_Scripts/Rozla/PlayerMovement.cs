@@ -5,8 +5,6 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     CharacterController _playerCC;
-    Transform _playerGraphics;
-    Animator _playerAnimController;
 
 
     [Header("State Machine")]
@@ -36,8 +34,6 @@ public class PlayerMovement : MonoBehaviour
     {
         _currentState = PlayerState.IDLE;
         _playerCC = GetComponent<CharacterController>();
-        _playerGraphics = transform.GetChild(0).transform;
-        _playerAnimController = _playerGraphics.GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -80,32 +76,20 @@ public class PlayerMovement : MonoBehaviour
 
                 _currentSpeed = 0f;
 
-                _playerAnimController.SetBool("WALK", false);
-                _playerAnimController.SetBool("CROUCH", false);
-
                 break;
             case PlayerState.WALK:
 
                 _currentSpeed = _walkSpeed;
-
-                _playerAnimController.SetBool("WALK", true);
-                _playerAnimController.SetBool("CROUCH", false);
 
                 break;
             case PlayerState.CROUCHIDLE:
 
                 _currentSpeed = 0f;
 
-                _playerAnimController.SetBool("WALK", false);
-                _playerAnimController.SetBool("CROUCH", true);
-
                 break;
             case PlayerState.CROUCH:
 
                 _currentSpeed = _crouchSpeed;
-
-                _playerAnimController.SetBool("WALK", true);
-                _playerAnimController.SetBool("CROUCH", true);
 
                 break;
             case PlayerState.SIT:
