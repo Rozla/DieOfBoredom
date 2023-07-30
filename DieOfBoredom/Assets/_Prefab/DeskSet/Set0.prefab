@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6625369169973833085}
   m_Layer: 6
   m_Name: Set0
-  m_TagString: Untagged
+  m_TagString: Chair
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

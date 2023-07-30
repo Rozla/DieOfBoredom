@@ -247,7 +247,29 @@ public class PlayerMovement : MonoBehaviour
             if(collider.gameObject != null)
             {
                 _interactObject = collider.gameObject;
+                CheckGOTag(collider.gameObject);
+
             }
+        }
+    }
+
+    void CheckGOTag(GameObject go)
+    {
+        if(go.tag == "Chair")
+        {
+            Debug.Log("Chaise vide");
+        }
+        else if(go.tag == "Gear")
+        {
+            Debug.Log("Engrenage");
+        }
+        else if(go.tag == "RingBox")
+        {
+            Debug.Log("Ring Box");
+        }
+        else
+        {
+            Debug.LogError("Pas d'objet");
         }
     }
 
