@@ -7,18 +7,35 @@ using UnityEngine.InputSystem;
 public class SceneLoader : MonoBehaviour
 {
     [SerializeField] InputActionAsset inputActions;
+    int _builtIndex;
 
     private void Update()
     {
         if (inputActions.FindAction("Pause").WasPressedThisFrame())
         {
-            Debug.Log("izi");
+            Pause();
         }
     }
 
-    public void LoadScene(int builtIndex)
+    public void LoadScene(int buildIndex)
     {
-        SceneManager.LoadScene(builtIndex);
+        SceneManager.LoadScene(buildIndex);
+    }
+
+    public void TryAgain()
+    {
+        _builtIndex = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(_builtIndex);
+        
+    }
+    public void Continue()
+    {
+        Time.timeScale = 1f;
+    }
+
+    public void Pause()
+    {
+        Time.timeScale = 0f;
     }
 
 //    public void ExitGame()
