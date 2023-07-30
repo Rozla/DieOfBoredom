@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4866316868771350065}
   - component: {fileID: 6473319708912657853}
   - component: {fileID: -6270008765253455671}
+  - component: {fileID: -3745332559385087740}
   m_Layer: 6
   m_Name: Gear
   m_TagString: Gear
@@ -65,6 +66,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b19c0c790c8c3ad41bd8c389eeaa1a43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-3745332559385087740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6813280433398460823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0fa6c56d97caf04f857f5e127acdb17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &7257588884909556959

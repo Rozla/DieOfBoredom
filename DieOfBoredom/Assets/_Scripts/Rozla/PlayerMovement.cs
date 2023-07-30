@@ -42,6 +42,12 @@ public class PlayerMovement : MonoBehaviour
     public bool _canCheckArrow;
     public bool _canStand;
 
+    [Space]
+    [Space]
+
+    [Header("Interact Settings")]
+    bool _isInteracting;
+
 
 
 
@@ -68,11 +74,9 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
 
-        Debug.Log(transform.rotation.y);
-
         OnStateUpdate();
 
-        if(!_isSitting)
+        if(!_isSitting && !_isInteracting)
         {
             RotatePlayer();
         }
@@ -102,7 +106,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(!_isSitting)
+        if(!_isSitting && !_isInteracting)
         {
             _playerCC.Move(MoveVector().normalized * _currentSpeed * Time.deltaTime);
         }
@@ -156,6 +160,11 @@ public class PlayerMovement : MonoBehaviour
             case PlayerState.PICKUP:
 
                 _currentSpeed = 0f;
+
+                _playerAnimController.SetTrigger("INTERACT");
+                _playerAnimController.SetBool("WALK", false);
+
+                StartCoroutine(InteractCor());
 
                 break;
         }
@@ -249,6 +258,19 @@ public class PlayerMovement : MonoBehaviour
 
                 break;
             case PlayerState.PICKUP:
+
+                if (_isInteracting) return;
+
+                if (GetPlayerInputs.CrouchInput)
+                {
+                    TransitionToState(PlayerState.CROUCHIDLE);
+                }
+
+                if (!GetPlayerInputs.CrouchInput)
+                {
+                    TransitionToState(PlayerState.IDLE);
+                }
+
                 break;
         }
     }
@@ -302,11 +324,13 @@ public class PlayerMovement : MonoBehaviour
         }
         else if(go.tag == "Gear")
         {
-            Debug.Log("Engrenage");
+            go.GetComponent<GearBehaviour>()._hasBeenPicked = true;
+            TransitionToState(PlayerState.PICKUP);
         }
         else if(go.tag == "RingBox")
         {
-            Debug.Log("Ring Box");
+            go.GetComponent<BoxBehaviour>().CheckGearLeft();
+            TransitionToState(PlayerState.PICKUP);
         }
         else
         {
@@ -404,5 +428,12 @@ public class PlayerMovement : MonoBehaviour
             _leftArrow.SetActive(true);
             _rightArrow.SetActive(false);
         }
+    }
+
+    IEnumerator InteractCor()
+    {
+        _isInteracting = true;
+        yield return new WaitForSeconds(1.5f);
+        _isInteracting = false;
     }
 }
