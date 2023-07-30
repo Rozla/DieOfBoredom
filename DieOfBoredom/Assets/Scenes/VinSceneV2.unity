@@ -12179,21 +12179,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4188575227605887169, guid: 58ee2783ec58d4b45ad4b946e6f83942,
-        type: 3}
-      propertyPath: _chairClips.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4188575227605887169, guid: 58ee2783ec58d4b45ad4b946e6f83942,
-        type: 3}
-      propertyPath: _chairClips.Array.data[0]
-      value: 
-      objectReference: {fileID: 8300000, guid: c40040ae9faabcc49add08c17354c9ee, type: 3}
-    - target: {fileID: 4188575227605887169, guid: 58ee2783ec58d4b45ad4b946e6f83942,
-        type: 3}
-      propertyPath: _chairClips.Array.data[1]
-      value: 
-      objectReference: {fileID: 8300000, guid: c40040ae9faabcc49add08c17354c9ee, type: 3}
     - target: {fileID: 5511786605168321514, guid: 58ee2783ec58d4b45ad4b946e6f83942,
         type: 3}
       propertyPath: m_RootOrder
