@@ -2601,6 +2601,11 @@ PrefabInstance:
       objectReference: {fileID: 189389448}
     - target: {fileID: 6417722440490720166, guid: 728b49beaf231d745a23bb7d337215e2,
         type: 3}
+      propertyPath: Notes
+      value: fdsfsddf
+      objectReference: {fileID: 0}
+    - target: {fileID: 6417722440490720166, guid: 728b49beaf231d745a23bb7d337215e2,
+        type: 3}
       propertyPath: _timerText
       value: 
       objectReference: {fileID: 797092649}

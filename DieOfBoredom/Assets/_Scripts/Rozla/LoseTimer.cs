@@ -1,11 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.Collections;
 using UnityEngine;
+
 
 public class LoseTimer : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI _timerText;
+
+    //[Tooltip("Default value = 300f")]
+
 
     [Tooltip("Default value = 300f")]
     [SerializeField] float _timer = 300f;
