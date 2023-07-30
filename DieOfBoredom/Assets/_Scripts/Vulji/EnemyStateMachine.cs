@@ -16,10 +16,11 @@ public class EnemyStateMachine : MonoBehaviour
     public float maxTimeToTurn = 15f;
 
     public float timeToTurn;
-    public float timeBeforeMoving1;
-    public float timeBeforeMoving2;
+    public float turningTime =0.5f;
+    public float timeBeforeLookingBack = 5f;
 
     private PlayerMovement playerMovement;
+    private BoxCollider detectionZone;
 
     private bool previousBoard;
     private bool previousClass;
@@ -39,12 +40,18 @@ public class EnemyStateMachine : MonoBehaviour
 
     private IEnumerator WaitForTurn()
     {
-        while (true)
+        if (!isRotating)
         {
-            timeToTurn = Random.Range(minTimeToTurn, maxTimeToTurn);
-            yield return new WaitForSeconds(timeToTurn);
-            TransitionToState(EnemyState.Turn);
+            while (true)
+            {
+                timeToTurn = Random.Range(minTimeToTurn, maxTimeToTurn);
+                yield return new WaitForSeconds(timeToTurn);
+                TransitionToState(EnemyState.Turn);
+            }
         }
+
+        yield return new WaitForSeconds(5f);
+
     }
 
     private IEnumerator RotateTowardsTarget(Quaternion targetRotation, float rotationTime)
@@ -65,8 +72,24 @@ public class EnemyStateMachine : MonoBehaviour
         transform.rotation = targetRotation;
         isRotating = false;
 
+        yield return new WaitForSeconds(5f);
+    }
 
-        TransitionToState(EnemyState.LookClass);
+    private IEnumerator LookClassCoroutine()
+    {
+
+        if (isRotating) yield break;
+
+        if (!playerMovement._isSitting)
+        {
+            TransitionToState(EnemyState.Angry);
+        }
+        yield return new WaitForSeconds(timeBeforeLookingBack);
+
+        TransitionToState(EnemyState.Turn);
+
+        yield return new WaitForSeconds(5f);
+
     }
 
     private void Update()
@@ -83,14 +106,16 @@ public class EnemyStateMachine : MonoBehaviour
                 break;
             case EnemyState.Turn:
                 targetRotation = transform.rotation * Quaternion.Euler(0, 180, 0);
-                timeBeforeMoving1 = 0.5f;
-                StartCoroutine(RotateTowardsTarget(targetRotation, timeBeforeMoving1));
+                turningTime = 0.5f;
+                StartCoroutine(RotateTowardsTarget(targetRotation, turningTime));
                 break;
             case EnemyState.LookClass:
-                timeBeforeMoving2 = 5f;
+                timeBeforeLookingBack = 5f;
+                StartCoroutine(LookClassCoroutine());
                 break;
             case EnemyState.Angry:
                 Debug.Log("You Lose");
+                StopAllCoroutines();
                 break;
             default:
                 break;
@@ -104,33 +129,19 @@ public class EnemyStateMachine : MonoBehaviour
             case EnemyState.LookBoard:
                 break;
             case EnemyState.Turn:
-                timeBeforeMoving1 -= Time.deltaTime;
-                if (timeBeforeMoving1 <= 0)
+                if (isRotating == false)
                 {
                     if (previousBoard)
                     {
                         TransitionToState(EnemyState.LookClass);
-                        if (timeBeforeMoving1 < 0)
-                            timeBeforeMoving1 = 0.5f;
                     }
                     else if (previousClass)
                     {
                         TransitionToState(EnemyState.LookBoard);
-                        if (timeBeforeMoving1 < 0)
-                            timeBeforeMoving1 = 0.5f;
                     }
                 }
                 break;
             case EnemyState.LookClass:
-                timeBeforeMoving2 -= Time.deltaTime;
-                if (!playerMovement._isSitting)
-                {
-                    TransitionToState(EnemyState.Angry);
-                }
-                if (timeBeforeMoving2 <= 0)
-                {
-                    TransitionToState(EnemyState.Turn);
-                }
                 break;
             case EnemyState.Angry:
                 break;
@@ -152,7 +163,6 @@ public class EnemyStateMachine : MonoBehaviour
                 break;
             case EnemyState.LookClass:
                 previousClass = true;
-                timeBeforeMoving2 = 5;
                 break;
             case EnemyState.Angry:
                 break;
