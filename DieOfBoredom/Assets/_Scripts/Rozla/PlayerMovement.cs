@@ -223,6 +223,9 @@ public class PlayerMovement : MonoBehaviour
 
                 break;
             case PlayerState.SIT:
+
+                Debug.Log(GetPlayerInputs.MoveInputs.x);
+
                 break;
             case PlayerState.PICKUP:
                 break;
@@ -318,8 +321,5 @@ public class PlayerMovement : MonoBehaviour
             timer += Time.deltaTime;
             yield return null;
         }
-
-        
-
     }
 }
