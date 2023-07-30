@@ -35,7 +35,10 @@ public class PlayerMovement : MonoBehaviour
     [Space]
 
     [Header("Sit Settings")]
+    [SerializeField] GameObject _leftArrow;
+    [SerializeField] GameObject _rightArrow;
     public bool _isSitting;
+    bool _canCheckArrow;
 
 
 
@@ -64,7 +67,10 @@ public class PlayerMovement : MonoBehaviour
     {
         OnStateUpdate();
 
-        RotatePlayer();
+        if(!_isSitting)
+        {
+            RotatePlayer();
+        }
     }
 
     Vector3 MoveVector()
@@ -224,7 +230,7 @@ public class PlayerMovement : MonoBehaviour
                 break;
             case PlayerState.SIT:
 
-                Debug.Log(GetPlayerInputs.MoveInputs.x);
+                SetDirArrow(MoveVector().x);
 
                 break;
             case PlayerState.PICKUP:
@@ -320,6 +326,24 @@ public class PlayerMovement : MonoBehaviour
 
             timer += Time.deltaTime;
             yield return null;
+        }
+
+        _canCheckArrow = true;
+    }
+
+    void SetDirArrow(float moveX)
+    {
+        if(!_canCheckArrow) return;
+
+        if(moveX < 0f)
+        {
+            _leftArrow.SetActive(true);
+            _rightArrow.SetActive(false);
+        }
+        else if(moveX > 0f)
+        {
+            _leftArrow.SetActive(false);
+            _rightArrow.SetActive(true);
         }
     }
 }
