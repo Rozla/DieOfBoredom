@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] LayerMask _interactibleMask;
     [SerializeField] Transform _overlapCenter;
     [SerializeField] float _overlapRadius = .4f;
+    public GameObject _interactObject;
 
     float _currentSpeed;
     Vector3 _move;
@@ -241,9 +242,12 @@ public class PlayerMovement : MonoBehaviour
     {
         Collider[] colliders = Physics.OverlapSphere(_overlapCenter.position, _overlapRadius, _interactibleMask);
 
-        if( colliders != null )
+        foreach (Collider collider in colliders)
         {
-            Debug.Log("Peut intéragir");
+            if(collider.gameObject != null)
+            {
+                _interactObject = collider.gameObject;
+            }
         }
     }
 

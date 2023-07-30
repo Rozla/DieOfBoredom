@@ -7,6 +7,8 @@ public class GetPlayerInputs : MonoBehaviour
 {
     [SerializeField] InputActionAsset _playerInputs;
 
+    PlayerMovement _playerMovementScript;
+
     static Vector2 _moveInputs;
 
     public static Vector2 MoveInputs
@@ -34,7 +36,7 @@ public class GetPlayerInputs : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        _playerMovementScript = GetComponent<PlayerMovement>();
     }
 
     // Update is called once per frame
@@ -47,9 +49,9 @@ public class GetPlayerInputs : MonoBehaviour
             _crouchInput = !_crouchInput;
         }
 
-        if(_playerInputs.FindAction("Interact").WasPerformedThisFrame() )
+        if (_playerInputs.FindAction("Interact").WasPerformedThisFrame())
         {
-            Debug.Log("Interact");
+            _playerMovementScript.SphereOverlap();
         }
     }
 }
