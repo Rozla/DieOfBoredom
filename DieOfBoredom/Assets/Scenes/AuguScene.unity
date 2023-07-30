@@ -616,6 +616,11 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 06fa88896480a18468612f350e286e04, type: 2}
+    - target: {fileID: 7451642711283311855, guid: bd4b83ced24a43e449b0ef2800d26143,
+        type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2036,7 +2041,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1290130070
 GameObject:
@@ -3293,7 +3298,22 @@ PrefabInstance:
     - target: {fileID: 434489657610608734, guid: c1cd93f006dfb9a44b7623106c1e1d41,
         type: 3}
       propertyPath: m_RootOrder
-      value: 16
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 434489657610608734, guid: c1cd93f006dfb9a44b7623106c1e1d41,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 434489657610608734, guid: c1cd93f006dfb9a44b7623106c1e1d41,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 434489657610608734, guid: c1cd93f006dfb9a44b7623106c1e1d41,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 434489657610608734, guid: c1cd93f006dfb9a44b7623106c1e1d41,
         type: 3}
@@ -3345,10 +3365,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 434489657610608734, guid: c1cd93f006dfb9a44b7623106c1e1d41,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2989544083402303668, guid: c1cd93f006dfb9a44b7623106c1e1d41,
         type: 3}
       propertyPath: m_Name
       value: PNJBoy
+      objectReference: {fileID: 0}
+    - target: {fileID: 7333604975222964786, guid: c1cd93f006dfb9a44b7623106c1e1d41,
+        type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
