@@ -305,7 +305,7 @@ public class PlayerMovement : MonoBehaviour
         Vector3 currentPos = gameObject.transform.position;
         Vector3 targetPos = go.transform.position + offset;
 
-        Quaternion currentRota = Quaternion.identity;
+        Quaternion currentRota = transform.rotation;
         Quaternion targetRota = go.transform.rotation;
         float timer = 0f;
         float maxTimer = 1f;
