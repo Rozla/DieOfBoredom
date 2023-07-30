@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -11,6 +12,11 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("State Machine")]
     public PlayerState _currentState;
+
+    [Header("OverLap Settings")]
+    [SerializeField] LayerMask _interactibleMask;
+    [SerializeField] Transform _overlapCenter;
+    [SerializeField] float _overlapRadius = .4f;
 
     float _currentSpeed;
     Vector3 _move;
@@ -231,6 +237,21 @@ public class PlayerMovement : MonoBehaviour
         OnStateEnter();
     }
 
+    public void SphereOverlap()
+    {
+        Collider[] colliders = Physics.OverlapSphere(_overlapCenter.position, _overlapRadius, _interactibleMask);
 
+        if( colliders != null )
+        {
+            Debug.Log("Peut intéragir");
+        }
+    }
+
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(_overlapCenter.position, _overlapRadius);
+    }
 
 }
