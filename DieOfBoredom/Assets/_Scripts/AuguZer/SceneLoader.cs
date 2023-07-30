@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
 
+
 public class SceneLoader : MonoBehaviour
 {
     [SerializeField] InputActionAsset inputActions;
@@ -12,10 +13,10 @@ public class SceneLoader : MonoBehaviour
 
     private void Awake()
     {
-        if (pauseMenu != null)
-        {
-            pauseMenu.SetActive(false);
-        }
+        //if (pauseMenu != null)
+        //{
+        //    pauseMenu.SetActive(false);
+        //}
     }
     private void Update()
     {
@@ -42,6 +43,10 @@ public class SceneLoader : MonoBehaviour
     public void Continue()
     {
         Time.timeScale = 1f;
+        if (pauseMenu.activeInHierarchy)
+        {
+            pauseMenu.SetActive(false);
+        }
     }
 
     public void Pause()

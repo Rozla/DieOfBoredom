@@ -394,7 +394,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputActions: {fileID: -944628639613478452, guid: 58e98fa18b9176d4a8641e6bc9e0363f,
     type: 3}
-  pauseMenu: {fileID: 0}
+  pauseMenu: {fileID: 998844280}
 --- !u!4 &35719029
 Transform:
   m_ObjectHideFlags: 0
