@@ -25,7 +25,7 @@ public class BoxBehaviour : MonoBehaviour
 
         if (GearsManager._allGears.Count == 0)
         {
-            Debug.Log("C'est gagné");
+            GameManager.GameWin = true;
         }
     }
 }
