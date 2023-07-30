@@ -302,7 +302,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else if(go.tag == "Gear")
         {
-            Debug.Log("Engrenage");
+            go.GetComponent<GearBehaviour>()._hasBeenPicked = true;
         }
         else if(go.tag == "RingBox")
         {
