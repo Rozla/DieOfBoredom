@@ -12,21 +12,23 @@ public class EnemyStateMachine : MonoBehaviour
     }
 
     [SerializeField] EnemyState currentState;
-    public GameObject player;
     public float minTimeToTurn = 5f;
     public float maxTimeToTurn = 15f;
 
-    private float timeToTurn;
-    private float timeBeforeMoving;
+    public float timeToTurn;
+    public float timeBeforeMoving1;
+    public float timeBeforeMoving2;
 
     private PlayerMovement playerMovement;
+
+    private bool checkSitting;
     private bool previousBoard;
     private bool previousClass;
 
-    private void Start()
+    private void Awake()
     {
-        playerMovement = player.GetComponent<PlayerMovement>();
-        currentState = EnemyState.LookBoard;
+        playerMovement = FindObjectOfType<PlayerMovement>();
+        checkSitting = playerMovement._isSitting;
     }
 
     private IEnumerator WaitForTurn()
@@ -53,12 +55,13 @@ public class EnemyStateMachine : MonoBehaviour
                 break;
             case EnemyState.Turn:
                 transform.Rotate(0, 180, 0);
-                timeBeforeMoving = 5f;
+                timeBeforeMoving1 = 5f;
                 break;
             case EnemyState.LookClass:
-                timeBeforeMoving = 5f;
+                timeBeforeMoving2 = 5f;
                 break;
             case EnemyState.Angry:
+                Debug.Log("You Lose");
                 break;
             default:
                 break;
@@ -72,8 +75,8 @@ public class EnemyStateMachine : MonoBehaviour
             case EnemyState.LookBoard:
                 break;
             case EnemyState.Turn:
-                timeBeforeMoving -= Time.deltaTime;
-                if (timeBeforeMoving <= 0)
+                timeBeforeMoving1 -= Time.deltaTime;
+                if (timeBeforeMoving1 <= 0)
                 {
                     if (previousBoard == true)
                     {
@@ -86,10 +89,10 @@ public class EnemyStateMachine : MonoBehaviour
                 }
                 break;
             case EnemyState.LookClass:
-                timeBeforeMoving = 5f;
-                if (timeBeforeMoving <= 0)
+                timeBeforeMoving2 -= Time.deltaTime;
+                if (timeBeforeMoving2 <= 0)
                 {
-                    if (!playerMovement._currentState.Equals(PlayerMovement.PlayerState.SIT))
+                    if (!checkSitting)
                     {
                         TransitionToState(EnemyState.Angry);
                     }
@@ -100,7 +103,6 @@ public class EnemyStateMachine : MonoBehaviour
                 }
                 break;
             case EnemyState.Angry:
-                // GameManager.Instance.YouLose();
                 break;
             default:
                 break;
@@ -117,11 +119,11 @@ public class EnemyStateMachine : MonoBehaviour
             case EnemyState.Turn:
                 previousBoard = false;
                 previousClass = false;
-                timeBeforeMoving = 0;
+                timeBeforeMoving1 = 0;
                 break;
             case EnemyState.LookClass:
                 previousClass = true;
-                timeBeforeMoving = 0;
+                timeBeforeMoving2 = 0;
                 break;
             case EnemyState.Angry:
                 break;
