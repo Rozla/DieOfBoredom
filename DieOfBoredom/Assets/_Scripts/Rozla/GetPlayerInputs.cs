@@ -46,5 +46,10 @@ public class GetPlayerInputs : MonoBehaviour
         {
             _crouchInput = !_crouchInput;
         }
+
+        if(_playerInputs.FindAction("Interact").WasPerformedThisFrame() )
+        {
+            Debug.Log("Interact");
+        }
     }
 }
