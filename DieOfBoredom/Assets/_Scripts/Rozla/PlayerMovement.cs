@@ -30,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
     float _currentSpeed;
     Vector3 _move;
     float _rotationSpeed = 15f;
+    float _lastXValue;
 
     [Space]
     [Space]
@@ -38,7 +39,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] GameObject _leftArrow;
     [SerializeField] GameObject _rightArrow;
     public bool _isSitting;
-    bool _canCheckArrow;
+    public bool _canCheckArrow;
+    public bool _canStand;
 
 
 
@@ -70,6 +72,11 @@ public class PlayerMovement : MonoBehaviour
         if(!_isSitting)
         {
             RotatePlayer();
+        }
+
+        if(MoveVector().x != 0f)
+        {
+            _lastXValue = MoveVector().x;
         }
     }
 
@@ -230,7 +237,12 @@ public class PlayerMovement : MonoBehaviour
                 break;
             case PlayerState.SIT:
 
-                SetDirArrow(MoveVector().x);
+                SetDirArrow(_lastXValue);
+
+                if (_canStand)
+                {
+                    SitToStand(_lastXValue);
+                }
 
                 break;
             case PlayerState.PICKUP:
@@ -266,6 +278,8 @@ public class PlayerMovement : MonoBehaviour
 
     public void SphereOverlap()
     {
+        if(_isSitting) return;
+
         Collider[] colliders = Physics.OverlapSphere(_overlapCenter.position, _overlapRadius, _interactibleMask);
 
         foreach (Collider collider in colliders)
@@ -331,19 +345,46 @@ public class PlayerMovement : MonoBehaviour
         _canCheckArrow = true;
     }
 
+    public void SitToStand(float moveXValue)
+    {
+        StartCoroutine(SitToStandCor(moveXValue));
+    }
+
+    IEnumerator SitToStandCor(float moveXValue)
+    {
+        _canCheckArrow = false;
+        _canStand = false;
+
+        Vector3 currentPos = transform.position;
+        float offset = moveXValue > 0f ? (- 1f * 1f) : (1f * 1f);
+        Vector3 targetPos = new Vector3(transform.position.x, transform.position.y + offset, transform.position.z);
+
+        float timer = 0f;
+        float maxTimer = 1f;
+
+        _playerAnimController.SetTrigger("STAND");
+
+        while( timer < maxTimer)
+        {
+            transform.position = Vector3.Lerp(currentPos, targetPos , timer / maxTimer);
+        }
+
+        yield return null;
+    }
+
     void SetDirArrow(float moveX)
     {
         if(!_canCheckArrow) return;
 
         if(moveX < 0f)
         {
-            _leftArrow.SetActive(true);
-            _rightArrow.SetActive(false);
+            _leftArrow.SetActive(false);
+            _rightArrow.SetActive(true);
         }
         else if(moveX > 0f)
         {
-            _leftArrow.SetActive(false);
-            _rightArrow.SetActive(true);
+            _leftArrow.SetActive(true);
+            _rightArrow.SetActive(false);
         }
     }
 }
