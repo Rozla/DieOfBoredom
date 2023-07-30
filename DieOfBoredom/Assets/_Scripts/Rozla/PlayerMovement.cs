@@ -17,7 +17,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] LayerMask _interactibleMask;
     [SerializeField] Transform _overlapCenter;
     [SerializeField] float _overlapRadius = .4f;
-    public GameObject _interactObject;
 
     float _currentSpeed;
     Vector3 _move;
@@ -246,9 +245,7 @@ public class PlayerMovement : MonoBehaviour
         {
             if(collider.gameObject != null)
             {
-                _interactObject = collider.gameObject;
                 CheckGOTag(collider.gameObject);
-
             }
         }
     }
@@ -280,4 +277,8 @@ public class PlayerMovement : MonoBehaviour
         Gizmos.DrawWireSphere(_overlapCenter.position, _overlapRadius);
     }
 
+    IEnumerator SitOnChairCor()
+    {
+        yield return null;
+    }
 }
