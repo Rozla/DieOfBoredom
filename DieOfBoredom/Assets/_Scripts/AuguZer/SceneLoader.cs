@@ -9,6 +9,8 @@ public class SceneLoader : MonoBehaviour
 {
     [SerializeField] InputActionAsset inputActions;
     [SerializeField] GameObject pauseMenu;
+    [SerializeField] GameObject winMenu;
+    [SerializeField] GameObject looseMenu;
     [SerializeField] GameObject UIplayer;
     int _builtIndex;
 
@@ -23,6 +25,16 @@ public class SceneLoader : MonoBehaviour
         {
             UIplayer.SetActive(true);
         }
+
+        if (winMenu != null)
+        {
+            winMenu.SetActive(false);
+        }
+
+        if (looseMenu != null)
+        {
+            looseMenu.SetActive(false);
+        }
     }
     private void Update()
     {
@@ -33,12 +45,38 @@ public class SceneLoader : MonoBehaviour
                 Pause();
             }
         }
+
+        Win();
+        Loose();
+    }
+
+    private void Win()
+    {
+        if (GameManager.GameWin)
+        {
+            winMenu.SetActive(true);
+            UIplayer.SetActive(false);
+        }
+    }
+
+    private void Loose()
+    {
+        if (GameManager.GameLost)
+        {
+            looseMenu.SetActive(true);
+            UIplayer.SetActive(false);
+        }
     }
 
     public void LoadScene(int buildIndex)
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene(buildIndex);
+    }
+    public void NextLevel()
+    {
+        Debug.Log("NextLevel");
+        //SceneManager.LoadScene(_builtIndex + 1);
     }
 
     public void TryAgain()
@@ -64,7 +102,7 @@ public class SceneLoader : MonoBehaviour
     public void Pause()
     {
         Time.timeScale = 0f;
-        if (UIplayer != null) 
+        if (UIplayer != null)
         {
             UIplayer.SetActive(false);
         }
