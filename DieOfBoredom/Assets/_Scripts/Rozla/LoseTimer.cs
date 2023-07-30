@@ -7,8 +7,8 @@ public class LoseTimer : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI _timerText;
 
-
-    float _timer;
+    [Tooltip("Default value = 300f")]
+    [SerializeField] float _timer = 300f;
     float _minutes;
     float _seconds;
 
@@ -16,7 +16,6 @@ public class LoseTimer : MonoBehaviour
     void Start()
     {
 
-        _timer = 300f;
     }
 
     // Update is called once per frame

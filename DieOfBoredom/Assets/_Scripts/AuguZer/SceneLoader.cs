@@ -85,10 +85,10 @@ public class SceneLoader : MonoBehaviour
     public void TryAgain()
     {
         Time.timeScale = 1.0f;
+        looseMenu.SetActive(false);
         _builtIndex = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(_builtIndex);
         UIplayer.SetActive(true);
-        looseMenu.SetActive(false);
 
     }
     public void Continue()
