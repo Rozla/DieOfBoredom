@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
 
 
     [Header("State Machine")]
-    [SerializeField] PlayerState _currentState;
+    public PlayerState _currentState;
 
     float _currentSpeed;
     Vector3 _move;
@@ -19,7 +19,7 @@ public class PlayerMovement : MonoBehaviour
     [Range(1f, 3f)][SerializeField] float _crouchSpeed = 3f;
 
 
-    enum PlayerState
+   public enum PlayerState
     {
         IDLE,
         WALK,
