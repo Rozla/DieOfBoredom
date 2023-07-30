@@ -52,6 +52,11 @@ public class GetPlayerInputs : MonoBehaviour
         if (_playerInputs.FindAction("Interact").WasPerformedThisFrame())
         {
             _playerMovementScript.SphereOverlap();
+            
+            if (_playerMovementScript._canCheckArrow)
+            {
+                _playerMovementScript._canStand = true;
+            }
         }
     }
 }
