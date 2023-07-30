@@ -89,7 +89,7 @@ CharacterController:
   m_Height: 1.04
   m_Radius: 0.23
   m_SlopeLimit: 45
-  m_StepOffset: 0.3
+  m_StepOffset: 0
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.65, z: 0.06}
@@ -127,6 +127,7 @@ MonoBehaviour:
   _overlapRadius: 0.4
   _walkSpeed: 3
   _crouchSpeed: 1
+  _isSitting: 0
 --- !u!1001 &3079207871620693488
 PrefabInstance:
   m_ObjectHideFlags: 0

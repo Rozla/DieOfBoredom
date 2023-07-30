@@ -223,6 +223,9 @@ public class PlayerMovement : MonoBehaviour
 
                 break;
             case PlayerState.SIT:
+
+                Debug.Log(GetPlayerInputs.MoveInputs.x);
+
                 break;
             case PlayerState.PICKUP:
                 break;
@@ -305,7 +308,7 @@ public class PlayerMovement : MonoBehaviour
         Vector3 currentPos = gameObject.transform.position;
         Vector3 targetPos = go.transform.position + offset;
 
-        Quaternion currentRota = Quaternion.identity;
+        Quaternion currentRota = transform.rotation;
         Quaternion targetRota = go.transform.rotation;
         float timer = 0f;
         float maxTimer = 1f;
@@ -318,8 +321,5 @@ public class PlayerMovement : MonoBehaviour
             timer += Time.deltaTime;
             yield return null;
         }
-
-        
-
     }
 }
