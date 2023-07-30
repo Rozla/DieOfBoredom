@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4866316868771350065}
   - component: {fileID: 6473319708912657853}
+  - component: {fileID: -6270008765253455671}
   m_Layer: 6
   m_Name: Gear
   m_TagString: Gear
@@ -54,6 +55,18 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.39804685
   m_Center: {x: 0, y: 0.060818315, z: 0.25179935}
+--- !u!114 &-6270008765253455671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6813280433398460823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b19c0c790c8c3ad41bd8c389eeaa1a43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7257588884909556959
 PrefabInstance:
   m_ObjectHideFlags: 0
