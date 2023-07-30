@@ -48,7 +48,7 @@ public class BoxBehaviour : MonoBehaviour
 
     private AudioClip RandomBoxClipGood()
     {
-        return _boxClipsWrong[Random.Range(0, _boxClipsWrong.Length)];
+        return _boxClipsGood[Random.Range(0, _boxClipsGood.Length)];
     }
 
     void PlayWrongSound()
