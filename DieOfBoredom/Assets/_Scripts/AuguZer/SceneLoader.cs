@@ -16,6 +16,9 @@ public class SceneLoader : MonoBehaviour
 
     private void Awake()
     {
+        GameManager.GameWin = false;
+        GameManager.GameLost = false;
+
         if (pauseMenu != null)
         {
             pauseMenu.SetActive(false);
@@ -84,6 +87,8 @@ public class SceneLoader : MonoBehaviour
         Time.timeScale = 1.0f;
         _builtIndex = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(_builtIndex);
+        UIplayer.SetActive(true);
+        looseMenu.SetActive(false);
 
     }
     public void Continue()
