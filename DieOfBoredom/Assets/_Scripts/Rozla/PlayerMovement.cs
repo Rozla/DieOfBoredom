@@ -356,8 +356,8 @@ public class PlayerMovement : MonoBehaviour
         _canStand = false;
 
         Vector3 currentPos = transform.position;
-        float offset = moveXValue > 0f ? (- 1f * 1f) : (1f * 1f);
-        Vector3 targetPos = new Vector3(transform.position.x, transform.position.y + offset, transform.position.z);
+        float offset = moveXValue > 0f ? ( 1f * 1.5f) : (- 1f * 1.5f);
+        Vector3 targetPos = new Vector3(transform.position.x + offset, transform.position.y, transform.position.z);
 
         float timer = 0f;
         float maxTimer = 1f;
@@ -367,9 +367,11 @@ public class PlayerMovement : MonoBehaviour
         while( timer < maxTimer)
         {
             transform.position = Vector3.Lerp(currentPos, targetPos , timer / maxTimer);
+
+            timer += Time.deltaTime;
+            yield return null;
         }
 
-        yield return null;
     }
 
     void SetDirArrow(float moveX)
