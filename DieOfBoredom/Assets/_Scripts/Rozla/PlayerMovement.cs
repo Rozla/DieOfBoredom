@@ -300,6 +300,7 @@ public class PlayerMovement : MonoBehaviour
         _isSitting = true;
         _playerCC.enabled = false;
         TransitionToState(PlayerState.SIT);
+
         Vector3 offset = new Vector3(0f, .1f, 0f);
         Vector3 currentPos = gameObject.transform.position;
         Vector3 targetPos = go.transform.position + offset;
