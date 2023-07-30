@@ -12,7 +12,6 @@ public class EnemyStateMachine : MonoBehaviour
     }
 
     [SerializeField] EnemyState currentState;
-    public GameObject player;
     public float minTimeToTurn = 5f;
     public float maxTimeToTurn = 15f;
 
@@ -20,13 +19,15 @@ public class EnemyStateMachine : MonoBehaviour
     private float timeBeforeMoving;
 
     private PlayerMovement playerMovement;
+
+    private bool checkSitting;
     private bool previousBoard;
     private bool previousClass;
 
-    private void Start()
+    private void Awake()
     {
-        playerMovement = player.GetComponent<PlayerMovement>();
-        currentState = EnemyState.LookBoard;
+        playerMovement = FindObjectOfType<PlayerMovement>();
+        checkSitting = playerMovement._isSitting;
     }
 
     private IEnumerator WaitForTurn()
@@ -59,6 +60,7 @@ public class EnemyStateMachine : MonoBehaviour
                 timeBeforeMoving = 5f;
                 break;
             case EnemyState.Angry:
+                Debug.Log("You Lose");
                 break;
             default:
                 break;
@@ -89,7 +91,7 @@ public class EnemyStateMachine : MonoBehaviour
                 timeBeforeMoving = 5f;
                 if (timeBeforeMoving <= 0)
                 {
-                    if (!playerMovement._currentState.Equals(PlayerMovement.PlayerState.SIT))
+                    if (!checkSitting)
                     {
                         TransitionToState(EnemyState.Angry);
                     }
@@ -100,7 +102,6 @@ public class EnemyStateMachine : MonoBehaviour
                 }
                 break;
             case EnemyState.Angry:
-                // GameManager.Instance.YouLose();
                 break;
             default:
                 break;
