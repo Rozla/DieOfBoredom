@@ -17,7 +17,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] LayerMask _interactibleMask;
     [SerializeField] Transform _overlapCenter;
     [SerializeField] float _overlapRadius = .4f;
-    public GameObject _interactObject;
 
     float _currentSpeed;
     Vector3 _move;
@@ -246,8 +245,28 @@ public class PlayerMovement : MonoBehaviour
         {
             if(collider.gameObject != null)
             {
-                _interactObject = collider.gameObject;
+                CheckGOTag(collider.gameObject);
             }
+        }
+    }
+
+    void CheckGOTag(GameObject go)
+    {
+        if(go.tag == "Chair")
+        {
+            Debug.Log("Chaise vide");
+        }
+        else if(go.tag == "Gear")
+        {
+            Debug.Log("Engrenage");
+        }
+        else if(go.tag == "RingBox")
+        {
+            Debug.Log("Ring Box");
+        }
+        else
+        {
+            Debug.LogError("Pas d'objet");
         }
     }
 
@@ -258,4 +277,8 @@ public class PlayerMovement : MonoBehaviour
         Gizmos.DrawWireSphere(_overlapCenter.position, _overlapRadius);
     }
 
+    IEnumerator SitOnChairCor()
+    {
+        yield return null;
+    }
 }
