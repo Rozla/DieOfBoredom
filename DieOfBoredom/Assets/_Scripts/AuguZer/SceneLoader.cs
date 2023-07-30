@@ -7,8 +7,16 @@ using UnityEngine.InputSystem;
 public class SceneLoader : MonoBehaviour
 {
     [SerializeField] InputActionAsset inputActions;
+    [SerializeField] GameObject pauseMenu;
     int _builtIndex;
 
+    private void Awake()
+    {
+        if (pauseMenu != null)
+        {
+            pauseMenu.SetActive(false);
+        }
+    }
     private void Update()
     {
         if (inputActions != null)
@@ -39,6 +47,10 @@ public class SceneLoader : MonoBehaviour
     public void Pause()
     {
         Time.timeScale = 0f;
+        if (pauseMenu != null && !pauseMenu.activeInHierarchy)
+        {
+            pauseMenu.SetActive(true);
+        }
     }
 
     public void ExitGame()
