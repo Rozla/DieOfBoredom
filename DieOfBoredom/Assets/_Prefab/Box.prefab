@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3719957763540616169}
   - component: {fileID: 9134510242358866249}
   - component: {fileID: 4540045650488458685}
+  - component: {fileID: 5766806661962543409}
   m_Layer: 6
   m_Name: Box
   m_TagString: RingBox
@@ -32,7 +33,7 @@ Transform:
   m_Children:
   - {fileID: 4535931175763758859}
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &9134510242358866249
 SphereCollider:
@@ -67,6 +68,121 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a07863785e8f95d41a6d67f86b06be2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _boxClipsWrong:
+  - {fileID: 8300000, guid: 25aa850ca7a028c4585fbb2bd8d6da9c, type: 3}
+  - {fileID: 8300000, guid: e5876b55fd99da4408f029924804318b, type: 3}
+  - {fileID: 8300000, guid: ed91835d33358864fb341940662d1ea9, type: 3}
+  - {fileID: 8300000, guid: 62ad09ff522abe046bf0748e3a9606bc, type: 3}
+  - {fileID: 8300000, guid: ec541c79a8d8b3d43b62a53657310b29, type: 3}
+  - {fileID: 8300000, guid: 32c7672a11bba0142a59d64d1a3409ac, type: 3}
+  - {fileID: 8300000, guid: 810184bcf22907c48abd07194405f918, type: 3}
+  - {fileID: 8300000, guid: ef234567dcde8384cbd965bc5ed8ea44, type: 3}
+  - {fileID: 8300000, guid: fac17306fd7b5024c886c9c8b68ce86c, type: 3}
+  - {fileID: 8300000, guid: ee59a99f71c3e684ab9d1768a0b1201e, type: 3}
+  - {fileID: 8300000, guid: 414e2d783f92ce3419387ffe58b34280, type: 3}
+  - {fileID: 8300000, guid: 2ad2e16edf37cec4ebf5c3c64b69e0a6, type: 3}
+  - {fileID: 8300000, guid: dbb21b791ee522049aef7d20e68dbe3d, type: 3}
+  - {fileID: 8300000, guid: 7796cde808f23bc48972396e23a081ec, type: 3}
+  - {fileID: 8300000, guid: 3b016cc704e4ee8408e497f67f2930e5, type: 3}
+  _boxClipsGood:
+  - {fileID: 8300000, guid: e7f634361219e3d4d875c1d681ac0262, type: 3}
+  - {fileID: 8300000, guid: 7caa06779a029af4ab793f3c885cde05, type: 3}
+--- !u!82 &5766806661962543409
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2339989763309550169}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &4535931175763629449
 PrefabInstance:
   m_ObjectHideFlags: 0

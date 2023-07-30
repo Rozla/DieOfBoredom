@@ -7,6 +7,7 @@ public class PlayerSoundsAndParticles : MonoBehaviour
     [SerializeField] AudioClip[] _stepClips;
     [SerializeField] AudioClip[] _crouchStepClips;
     [SerializeField] AudioClip[] _chairClips;
+    [SerializeField] AudioClip[] _gearClips;
 
     AudioSource _audioSource;
 
@@ -46,6 +47,14 @@ public class PlayerSoundsAndParticles : MonoBehaviour
         _audioSource.PlayOneShot(clip);
     }
 
+    private void GearSound()
+    {
+        AudioClip clip = RandomGearClip();
+        _audioSource.pitch = Random.Range(.9f, 1.1f);
+        _audioSource.volume = Random.Range(.1f, .3f);
+        _audioSource.PlayOneShot(clip);
+    }
+
     private AudioClip RandomStepClip()
     {
         return _stepClips[Random.Range(0, _stepClips.Length)];
@@ -59,5 +68,10 @@ public class PlayerSoundsAndParticles : MonoBehaviour
     private AudioClip RandomChairClip()
     {
         return _chairClips[Random.Range(0, _chairClips.Length)];
+    }
+
+    private AudioClip RandomGearClip()
+    {
+        return _gearClips[Random.Range(0, _gearClips.Length)];
     }
 }
