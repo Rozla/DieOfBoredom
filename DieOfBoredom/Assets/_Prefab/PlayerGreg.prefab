@@ -67,7 +67,7 @@ Transform:
   - {fileID: 6454424549705635198}
   - {fileID: 5897422399367459576}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!143 &4798055747529124197
 CharacterController:
@@ -349,6 +349,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: ead6cee2038916d4581102b1b4e5e817, type: 3}
   _crouchStepClips:
   - {fileID: 8300000, guid: ceabdd707e5e98d4892175814106d401, type: 3}
+  _chairClips:
+  - {fileID: 8300000, guid: c40040ae9faabcc49add08c17354c9ee, type: 3}
 --- !u!4 &3256439272386124315 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f69d97e045c474c44a741018dc22c4db,
