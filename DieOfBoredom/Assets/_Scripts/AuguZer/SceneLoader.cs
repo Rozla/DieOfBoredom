@@ -9,14 +9,20 @@ public class SceneLoader : MonoBehaviour
 {
     [SerializeField] InputActionAsset inputActions;
     [SerializeField] GameObject pauseMenu;
+    [SerializeField] GameObject UIplayer;
     int _builtIndex;
 
     private void Awake()
     {
-        //if (pauseMenu != null)
-        //{
-        //    pauseMenu.SetActive(false);
-        //}
+        if (pauseMenu != null)
+        {
+            pauseMenu.SetActive(false);
+        }
+
+        if (UIplayer != null)
+        {
+            UIplayer.SetActive(true);
+        }
     }
     private void Update()
     {
@@ -31,11 +37,13 @@ public class SceneLoader : MonoBehaviour
 
     public void LoadScene(int buildIndex)
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene(buildIndex);
     }
 
     public void TryAgain()
     {
+        Time.timeScale = 1.0f;
         _builtIndex = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(_builtIndex);
 
@@ -47,11 +55,19 @@ public class SceneLoader : MonoBehaviour
         {
             pauseMenu.SetActive(false);
         }
+        if (!UIplayer.activeInHierarchy)
+        {
+            UIplayer.SetActive(true);
+        }
     }
 
     public void Pause()
     {
         Time.timeScale = 0f;
+        if (UIplayer != null) 
+        {
+            UIplayer.SetActive(false);
+        }
         if (pauseMenu != null && !pauseMenu.activeInHierarchy)
         {
             pauseMenu.SetActive(true);
