@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerSoundsAndParticles : MonoBehaviour
 {
     [SerializeField] AudioClip[] _stepClips;
+    [SerializeField] AudioClip[] _crouchStepClips;
 
     AudioSource _audioSource;
 
@@ -23,13 +24,26 @@ public class PlayerSoundsAndParticles : MonoBehaviour
     private void Step()
     {
         AudioClip clip = RandomStepClip();
-        _audioSource.PlayOneShot(clip);
-        _audioSource.pitch = Random.Range(.9f,1.1f);
+        _audioSource.pitch = Random.Range(.7f, 1.3f);
         _audioSource.volume = Random.Range(.1f, .3f);
+        _audioSource.PlayOneShot(clip);
+    }
+
+    private void CrouchStep()
+    {
+        AudioClip clip = RandomCrouchStepClip();
+        _audioSource.pitch = Random.Range(.7f, 1.3f);
+        _audioSource.volume = Random.Range(.05f, .1f);
+        _audioSource.PlayOneShot(clip);
     }
 
     private AudioClip RandomStepClip()
     {
         return _stepClips[Random.Range(0, _stepClips.Length)];
+    }
+
+    private AudioClip RandomCrouchStepClip()
+    {
+        return _crouchStepClips[Random.Range(0, _crouchStepClips.Length)];
     }
 }

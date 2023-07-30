@@ -347,6 +347,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: e93f236f04a9d07478c9d6fa0c8f7a36, type: 3}
   - {fileID: 8300000, guid: 602a2af53e357684aaeb90cbebd0047e, type: 3}
   - {fileID: 8300000, guid: ead6cee2038916d4581102b1b4e5e817, type: 3}
+  _crouchStepClips:
+  - {fileID: 8300000, guid: ceabdd707e5e98d4892175814106d401, type: 3}
 --- !u!4 &3256439272386124315 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f69d97e045c474c44a741018dc22c4db,
