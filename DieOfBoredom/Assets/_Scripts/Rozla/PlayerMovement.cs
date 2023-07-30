@@ -389,7 +389,7 @@ public class PlayerMovement : MonoBehaviour
         float offset = moveXValue > 0f ? ( 1f * 1f) : (- 1f * 1f);
         Vector3 targetPos = new Vector3(transform.position.x + offset, transform.position.y, transform.position.z);
 
-        Quaternion currentRota = Quaternion.Euler(0f, 180f, 0f);
+        Quaternion currentRota = Quaternion.Euler(0f, 0, 0f);
         float offsetRota = moveXValue > 0f ? 90f : -90f;
         Quaternion targetRota = Quaternion.Euler(0f, offsetRota, 0f);
 
@@ -420,13 +420,13 @@ public class PlayerMovement : MonoBehaviour
 
         if(moveX < 0f)
         {
-            _leftArrow.SetActive(false);
-            _rightArrow.SetActive(true);
+            _leftArrow.SetActive(true);
+            _rightArrow.SetActive(false);
         }
         else if(moveX > 0f)
         {
-            _leftArrow.SetActive(true);
-            _rightArrow.SetActive(false);
+            _leftArrow.SetActive(false);
+            _rightArrow.SetActive(true);
         }
     }
 

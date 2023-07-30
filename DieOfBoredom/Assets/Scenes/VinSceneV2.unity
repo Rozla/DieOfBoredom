@@ -2763,11 +2763,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: UIPlayer
       objectReference: {fileID: 0}
-    - target: {fileID: 6922151794274929863, guid: 3829071d9c7379346b5a698cfcd90348,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8409904812523860460, guid: 3829071d9c7379346b5a698cfcd90348,
         type: 3}
       propertyPath: m_Pivot.x
@@ -9131,7 +9126,7 @@ PrefabInstance:
     - target: {fileID: 6417722440490720166, guid: 728b49beaf231d745a23bb7d337215e2,
         type: 3}
       propertyPath: _timer
-      value: 10.58
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 6417722440490720166, guid: 728b49beaf231d745a23bb7d337215e2,
         type: 3}
