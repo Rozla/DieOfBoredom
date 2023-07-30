@@ -21,15 +21,18 @@ public class EnemyStateMachine : MonoBehaviour
 
     private PlayerMovement playerMovement;
     private BoxCollider detectionZone;
+    private Animator animator;
 
     private bool previousBoard;
     private bool previousClass;
     private bool isRotating;
+    
 
      private Quaternion targetRotation;
 
     private void Awake()
     {
+        animator = GetComponentInChildren<Animator>();
         playerMovement = FindObjectOfType<PlayerMovement>();
     }
 
@@ -61,7 +64,7 @@ public class EnemyStateMachine : MonoBehaviour
         isRotating = true;
         float elapsedTime = 0;
         Quaternion startRotation = transform.rotation;
-
+        animator.SetTrigger("TurnLeft");
         while (elapsedTime < rotationTime)
         {
             transform.rotation = Quaternion.Slerp(startRotation, targetRotation, elapsedTime / rotationTime);
@@ -70,6 +73,7 @@ public class EnemyStateMachine : MonoBehaviour
         }
 
         transform.rotation = targetRotation;
+
         isRotating = false;
 
         yield return new WaitForSeconds(5f);
@@ -115,6 +119,7 @@ public class EnemyStateMachine : MonoBehaviour
                 break;
             case EnemyState.Angry:
                 Debug.Log("You Lose");
+                animator.SetTrigger("Angry");
                 StopAllCoroutines();
                 break;
             default:
