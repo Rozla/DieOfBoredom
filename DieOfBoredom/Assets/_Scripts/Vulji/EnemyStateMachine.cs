@@ -15,8 +15,9 @@ public class EnemyStateMachine : MonoBehaviour
     public float minTimeToTurn = 5f;
     public float maxTimeToTurn = 15f;
 
-    private float timeToTurn;
-    private float timeBeforeMoving;
+    public float timeToTurn;
+    public float timeBeforeMoving1;
+    public float timeBeforeMoving2;
 
     private PlayerMovement playerMovement;
 
@@ -54,10 +55,10 @@ public class EnemyStateMachine : MonoBehaviour
                 break;
             case EnemyState.Turn:
                 transform.Rotate(0, 180, 0);
-                timeBeforeMoving = 5f;
+                timeBeforeMoving1 = 5f;
                 break;
             case EnemyState.LookClass:
-                timeBeforeMoving = 5f;
+                timeBeforeMoving2 = 5f;
                 break;
             case EnemyState.Angry:
                 Debug.Log("You Lose");
@@ -74,8 +75,8 @@ public class EnemyStateMachine : MonoBehaviour
             case EnemyState.LookBoard:
                 break;
             case EnemyState.Turn:
-                timeBeforeMoving -= Time.deltaTime;
-                if (timeBeforeMoving <= 0)
+                timeBeforeMoving1 -= Time.deltaTime;
+                if (timeBeforeMoving1 <= 0)
                 {
                     if (previousBoard == true)
                     {
@@ -88,8 +89,8 @@ public class EnemyStateMachine : MonoBehaviour
                 }
                 break;
             case EnemyState.LookClass:
-                timeBeforeMoving = 5f;
-                if (timeBeforeMoving <= 0)
+                timeBeforeMoving2 -= Time.deltaTime;
+                if (timeBeforeMoving2 <= 0)
                 {
                     if (!checkSitting)
                     {
@@ -118,11 +119,11 @@ public class EnemyStateMachine : MonoBehaviour
             case EnemyState.Turn:
                 previousBoard = false;
                 previousClass = false;
-                timeBeforeMoving = 0;
+                timeBeforeMoving1 = 0;
                 break;
             case EnemyState.LookClass:
                 previousClass = true;
-                timeBeforeMoving = 0;
+                timeBeforeMoving2 = 0;
                 break;
             case EnemyState.Angry:
                 break;
