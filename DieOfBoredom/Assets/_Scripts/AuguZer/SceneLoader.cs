@@ -11,9 +11,12 @@ public class SceneLoader : MonoBehaviour
 
     private void Update()
     {
-        if (inputActions.FindAction("Pause").WasPressedThisFrame())
+        if (inputActions != null)
         {
-            Pause();
+            if (inputActions.FindAction("Pause").WasPressedThisFrame())
+            {
+                Pause();
+            }
         }
     }
 
@@ -26,7 +29,7 @@ public class SceneLoader : MonoBehaviour
     {
         _builtIndex = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(_builtIndex);
-        
+
     }
     public void Continue()
     {
@@ -38,14 +41,14 @@ public class SceneLoader : MonoBehaviour
         Time.timeScale = 0f;
     }
 
-//    public void ExitGame()
-//    {
-//#if UNITY_STANDALONE
-//        Application.Quit();
-//#endif
+    public void ExitGame()
+    {
+#if UNITY_STANDALONE
+        Application.Quit();
+#endif
 
-//#if UNITY_EDITOR
-//        UnityEditor.EditorApplication.isPlaying = false;
-//#endif
-//    }
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#endif
+    }
 }
