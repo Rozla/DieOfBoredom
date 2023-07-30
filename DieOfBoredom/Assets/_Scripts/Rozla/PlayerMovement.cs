@@ -13,18 +13,31 @@ public class PlayerMovement : MonoBehaviour
     [Header("State Machine")]
     public PlayerState _currentState;
 
+    [Space]
+    [Space]
+
     [Header("OverLap Settings")]
     [SerializeField] LayerMask _interactibleMask;
     [SerializeField] Transform _overlapCenter;
     [SerializeField] float _overlapRadius = .4f;
 
+    [Space]
+    [Space]
+
+    [Header("Move Settings")]
+    [Range(3f, 10f)][SerializeField] float _walkSpeed = 7f;
+    [Range(1f, 3f)][SerializeField] float _crouchSpeed = 3f;
     float _currentSpeed;
     Vector3 _move;
     float _rotationSpeed = 15f;
 
-    [Range(3f, 10f)][SerializeField] float _walkSpeed = 7f;
+    [Space]
+    [Space]
 
-    [Range(1f, 3f)][SerializeField] float _crouchSpeed = 3f;
+    [Header("Sit Settings")]
+    public bool _isSitting;
+
+
 
 
     public enum PlayerState
@@ -73,7 +86,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        _playerCC.Move(MoveVector().normalized * _currentSpeed * Time.deltaTime);
+        if(!_isSitting)
+        {
+            _playerCC.Move(MoveVector().normalized * _currentSpeed * Time.deltaTime);
+        }
     }
 
 
@@ -117,6 +133,8 @@ public class PlayerMovement : MonoBehaviour
             case PlayerState.SIT:
 
                 _currentSpeed = 0f;
+                _playerAnimController.SetTrigger("SIT");
+                _playerAnimController.SetBool("WALK", false);
 
                 break;
             case PlayerState.PICKUP:
@@ -254,7 +272,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if(go.tag == "Chair")
         {
-            Debug.Log("Chaise vide");
+            StartCoroutine(SitOnChairCor(go));
         }
         else if(go.tag == "Gear")
         {
@@ -277,8 +295,30 @@ public class PlayerMovement : MonoBehaviour
         Gizmos.DrawWireSphere(_overlapCenter.position, _overlapRadius);
     }
 
-    IEnumerator SitOnChairCor()
+    IEnumerator SitOnChairCor(GameObject go)
     {
-        yield return null;
+        _isSitting = true;
+        _playerCC.enabled = false;
+        TransitionToState(PlayerState.SIT);
+        Vector3 offset = new Vector3(0f, .1f, 0f);
+        Vector3 currentPos = gameObject.transform.position;
+        Vector3 targetPos = go.transform.position + offset;
+
+        Quaternion currentRota = Quaternion.identity;
+        Quaternion targetRota = go.transform.rotation;
+        float timer = 0f;
+        float maxTimer = 1f;
+
+        while(timer < maxTimer)
+        {
+            transform.position = Vector3.Lerp(currentPos, targetPos, timer / maxTimer);
+            transform.rotation = Quaternion.Slerp(currentRota, targetRota, timer / maxTimer);
+
+            timer += Time.deltaTime;
+            yield return null;
+        }
+
+        
+
     }
 }
