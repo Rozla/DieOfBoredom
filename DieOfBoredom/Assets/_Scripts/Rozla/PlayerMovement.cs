@@ -47,6 +47,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Interact Settings")]
     bool _isInteracting;
+    float _interactDuration;
 
 
 
@@ -161,10 +162,9 @@ public class PlayerMovement : MonoBehaviour
 
                 _currentSpeed = 0f;
 
-                _playerAnimController.SetTrigger("INTERACT");
                 _playerAnimController.SetBool("WALK", false);
 
-                StartCoroutine(InteractCor());
+                StartCoroutine(InteractCor(_interactDuration));
 
                 break;
         }
@@ -325,11 +325,15 @@ public class PlayerMovement : MonoBehaviour
         else if(go.tag == "Gear")
         {
             go.GetComponent<GearBehaviour>()._hasBeenPicked = true;
+            _playerAnimController.SetTrigger("PICKUP");
+            _interactDuration = .4f;
             TransitionToState(PlayerState.PICKUP);
         }
         else if(go.tag == "RingBox")
         {
             go.GetComponent<BoxBehaviour>().CheckGearLeft();
+            _playerAnimController.SetTrigger("INTERACT");
+            _interactDuration = 1.5f;
             TransitionToState(PlayerState.PICKUP);
         }
         else
@@ -430,10 +434,10 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    IEnumerator InteractCor()
+    IEnumerator InteractCor(float interactCorDuration)
     {
         _isInteracting = true;
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(interactCorDuration);
         _isInteracting = false;
     }
 }
