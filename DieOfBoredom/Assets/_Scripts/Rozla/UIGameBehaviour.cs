@@ -26,6 +26,8 @@ public class UIGameBehaviour : MonoBehaviour
     string _knmScheme = "Keyboard&Mouse";
     string _gamepadScheme = "Gamepad";
 
+    public static string _currentScheme;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -45,8 +47,16 @@ public class UIGameBehaviour : MonoBehaviour
         });
     }
 
+    private void Update()
+    {
+        Debug.Log(_currentScheme);
+    }
+
     void OnControlsChanged(UnityEngine.InputSystem.PlayerInput obj)
     {
+        if(_playerInput.currentControlScheme == _knmScheme) _currentScheme = _knmScheme;
+        if (_playerInput.currentControlScheme == _gamepadScheme) _currentScheme = _gamepadScheme;
+
         if (_continueButton.isActiveAndEnabled)
         {
             if (_playerInput.currentControlScheme == _knmScheme)
