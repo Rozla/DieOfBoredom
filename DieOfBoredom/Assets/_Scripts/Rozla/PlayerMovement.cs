@@ -65,7 +65,10 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _currentState = PlayerState.IDLE;
+        _currentState = PlayerState.SIT;
+        _isSitting = true;
+        _canCheckArrow = true;
+        _lastXValue = 1f;
         _playerCC = GetComponent<CharacterController>();
         _playerGraphics = transform.GetChild(0).transform;
         _playerAnimController = _playerGraphics.GetComponent<Animator>();
