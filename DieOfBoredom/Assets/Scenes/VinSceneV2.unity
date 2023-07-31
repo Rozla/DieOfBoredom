@@ -6197,10 +6197,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 491594965}
     m_Modifications:
+    - target: {fileID: 1408539737969332803, guid: c76663cecc69dbb4e9d67cd91717f2a5,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5563499115313633406, guid: c76663cecc69dbb4e9d67cd91717f2a5,
         type: 3}
       propertyPath: m_Name
       value: SetStart
+      objectReference: {fileID: 0}
+    - target: {fileID: 5732987467772700215, guid: c76663cecc69dbb4e9d67cd91717f2a5,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5732987467772700215, guid: c76663cecc69dbb4e9d67cd91717f2a5,
+        type: 3}
+      propertyPath: m_UseSpriteMesh
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5791803734254833128, guid: c76663cecc69dbb4e9d67cd91717f2a5,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8042916665899815057, guid: c76663cecc69dbb4e9d67cd91717f2a5,
         type: 3}
