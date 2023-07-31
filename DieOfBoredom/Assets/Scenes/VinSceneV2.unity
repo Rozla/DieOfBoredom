@@ -16961,25 +16961,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1507584509}
     m_Modifications:
-    - target: {fileID: 447915125410073809, guid: f7bab323b086b1f4fb568ff2079877a2,
-        type: 3}
-      propertyPath: m_UseSpriteMesh
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2339989763309550169, guid: f7bab323b086b1f4fb568ff2079877a2,
         type: 3}
       propertyPath: m_Name
       value: Box
-      objectReference: {fileID: 0}
-    - target: {fileID: 2499300059484824452, guid: f7bab323b086b1f4fb568ff2079877a2,
-        type: 3}
-      propertyPath: m_Type
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2499300059484824452, guid: f7bab323b086b1f4fb568ff2079877a2,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3719957763540616169, guid: f7bab323b086b1f4fb568ff2079877a2,
         type: 3}

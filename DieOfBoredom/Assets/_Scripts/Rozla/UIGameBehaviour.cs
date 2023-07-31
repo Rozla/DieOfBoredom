@@ -71,6 +71,11 @@ public class UIGameBehaviour : MonoBehaviour
         if (_nextLevelButton.isActiveAndEnabled)
         {
 
+            if (_eventSystem.firstSelectedGameObject != _nextLevelButton.gameObject)
+            {
+                _eventSystem.firstSelectedGameObject = _nextLevelButton.gameObject;
+            }
+
             if (_playerInput.currentControlScheme == _knmScheme)
             {
                 _eventSystem.SetSelectedGameObject(null);
