@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PNJSounds : MonoBehaviour
+public class SoundManager : MonoBehaviour
 {
-    [SerializeField] AudioClip[] voiceClip;
+    [SerializeField] AudioClip[] pnjVoiceClip;
+    [SerializeField] AudioClip[] jingleClip;
 
     [SerializeField] AudioSource pnjSource;
+    [SerializeField] AudioSource musicSource;
 
 
     private void Update()
@@ -14,10 +16,12 @@ public class PNJSounds : MonoBehaviour
         if (GameManager.GameWin)
         {
             PlayVoiceClip(0, .3f);
+            PlayJingleClip(0, 1f);
         }
         if (GameManager.GameLost)
         {
             PlayVoiceClip(1, 1f);
+            PlayJingleClip(1, 1f);
         }
     }
 
@@ -28,11 +32,23 @@ public class PNJSounds : MonoBehaviour
         {
             pnjSource.PlayOneShot(clip, volume);
         }
+    } 
+    private void PlayJingleClip(int voiceIndex, float volume)
+    {
+        AudioClip clip = JingleClip(voiceIndex);
+        if (!musicSource.isPlaying)
+        {
+            pnjSource.PlayOneShot(clip, volume);
+        }
     }
 
     private AudioClip VoiceClip(int index)
     {
-        return voiceClip[index];
+        return pnjVoiceClip[index];
+    }
+    private AudioClip JingleClip(int index)
+    {
+        return jingleClip[index];
     }
 
 }
