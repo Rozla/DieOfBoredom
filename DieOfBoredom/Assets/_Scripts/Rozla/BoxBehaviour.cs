@@ -7,8 +7,8 @@ public class BoxBehaviour : MonoBehaviour
 {
     [SerializeField] AudioClip[] _boxClipsWrong;
     [SerializeField] AudioClip[] _boxClipsGood;
-    [SerializeField] AudioClip winPnjVoice;
-    [SerializeField] AudioClip winJingle;
+    //[SerializeField] AudioClip winPnjVoice;
+    //[SerializeField] AudioClip winJingle;
 
 
     AudioSource _boxAudioSource;
@@ -49,8 +49,7 @@ public class BoxBehaviour : MonoBehaviour
         AudioClip clip = RandomBoxClipGood();
         _boxAudioSource.pitch = Random.Range(.9f, 1.1f);
         _boxAudioSource.volume = Random.Range(.1f, .3f);
-        StartCoroutine(WinSoundCoroutine(clip));
-
+        _boxAudioSource.PlayOneShot(clip);
     }
 
     private AudioClip RandomBoxClipGood()
@@ -72,11 +71,10 @@ public class BoxBehaviour : MonoBehaviour
         return _boxClipsWrong[Random.Range(0, _boxClipsWrong.Length)];
     }
 
-    IEnumerator WinSoundCoroutine(AudioClip clip)
-    {
-        _boxAudioSource.PlayOneShot(clip);
-        yield return new WaitForSeconds(clip.length);
-        _boxAudioSource.PlayOneShot(winPnjVoice);
-        _boxAudioSource.PlayOneShot(winJingle);
-    }  
+    //IEnumerator WinSoundCoroutine(AudioClip clip)
+    //{
+    //    yield return new WaitForSeconds(clip.length);
+    //    _boxAudioSource.PlayOneShot(winPnjVoice);
+    //    _boxAudioSource.PlayOneShot(winJingle);
+    //}  
 }

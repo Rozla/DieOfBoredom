@@ -14,7 +14,11 @@ public class SceneLoader : MonoBehaviour
     [SerializeField] GameObject UIplayer;
     int _builtIndex;
 
+    [SerializeField] BoxBehaviour boxBehaviour;
+    [SerializeField] LoseTimer loseTimer;
+
     UIGameBehaviour _uiGameScript;
+    
 
     private void Awake()
     {
@@ -44,6 +48,18 @@ public class SceneLoader : MonoBehaviour
             looseMenu.SetActive(false);
         }
     }
+
+    private void Start()
+    {
+        boxBehaviour._winEvent.AddListener(() =>{
+            StartCoroutine(WinPanelCoroutine());
+        });
+
+        loseTimer._loseEvent.AddListener(() =>
+        {
+            StartCoroutine(LoosePanelCoroutine());
+        });
+    }
     private void Update()
     {
         if (inputActions != null)
@@ -54,8 +70,8 @@ public class SceneLoader : MonoBehaviour
             }
         }
 
-        Win();
-        Loose();
+        //Win();
+        //Loose();
     }
 
     private void Win()
@@ -131,5 +147,18 @@ public class SceneLoader : MonoBehaviour
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #endif
+    }
+
+
+
+    IEnumerator WinPanelCoroutine()
+    {
+        yield return new WaitForSeconds(6f);
+        Win();
+    } 
+    IEnumerator LoosePanelCoroutine()
+    {
+        yield return new WaitForSeconds(3f);
+        Loose();
     }
 }
