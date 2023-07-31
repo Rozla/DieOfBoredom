@@ -47,11 +47,6 @@ public class UIGameBehaviour : MonoBehaviour
         });
     }
 
-    private void Update()
-    {
-        Debug.Log(_currentScheme);
-    }
-
     void OnControlsChanged(UnityEngine.InputSystem.PlayerInput obj)
     {
         if(_playerInput.currentControlScheme == _knmScheme) _currentScheme = _knmScheme;

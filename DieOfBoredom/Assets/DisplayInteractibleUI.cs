@@ -16,6 +16,7 @@ public class DisplayInteractibleUI : MonoBehaviour
     SphereCollider _sphereCollider;
     GameObject _canva;
     GameObject _interactText;
+    bool _canDisplay;
 
     Vector3 _currentPos;
     Vector3 _displayPos;
@@ -42,19 +43,9 @@ public class DisplayInteractibleUI : MonoBehaviour
         _interactText.SetActive(value);
     }
 
-
-
-    private void OnTriggerEnter(Collider other)
+    private void Update()
     {
-        if (other.gameObject.layer == 7)
-        {
-            DisplayText(true);
-        }
-    }
-
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.gameObject.layer == 7)
+        if(_canDisplay)
         {
             if (UIGameBehaviour._currentScheme == _knm || UIGameBehaviour._currentScheme == null)
             {
@@ -70,10 +61,22 @@ public class DisplayInteractibleUI : MonoBehaviour
         }
     }
 
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.layer == 7)
+        {
+            DisplayText(true);
+            _canDisplay = true;
+        }
+    }
+
+
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.layer == 7)
         {
+            _canDisplay = false;
             DisplayText(false);
         }
     }
