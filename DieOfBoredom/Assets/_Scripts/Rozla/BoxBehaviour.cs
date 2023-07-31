@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class BoxBehaviour : MonoBehaviour
 {
@@ -11,6 +12,9 @@ public class BoxBehaviour : MonoBehaviour
 
 
     AudioSource _boxAudioSource;
+
+    public UnityEvent _winEvent;
+
 
     // Start is called before the first frame update
     void Start()
@@ -35,6 +39,7 @@ public class BoxBehaviour : MonoBehaviour
         if (GearsManager._allGears.Count == 0)
         {
             PlayGoodSound();
+            _winEvent?.Invoke();
             GameManager.GameWin = true;
         }
     }
