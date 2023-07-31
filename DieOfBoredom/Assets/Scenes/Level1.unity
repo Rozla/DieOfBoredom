@@ -7672,6 +7672,18 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 2076187710}
   m_SourcePrefab: {fileID: 100100000, guid: 728b49beaf231d745a23bb7d337215e2, type: 3}
+--- !u!114 &958363965 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6417722440490720166, guid: 728b49beaf231d745a23bb7d337215e2,
+    type: 3}
+  m_PrefabInstance: {fileID: 958363964}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2076187705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b47ae7ad002a0ff439a55cda4d8427dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &981465042
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17207,6 +17219,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: UIGame
       objectReference: {fileID: 0}
+    - target: {fileID: 1266517880523221602, guid: 6f96c50c8570c294b8388bcc09aa3254,
+        type: 3}
+      propertyPath: _eventSystem
+      value: 
+      objectReference: {fileID: 296693460}
+    - target: {fileID: 1266517880523221602, guid: 6f96c50c8570c294b8388bcc09aa3254,
+        type: 3}
+      propertyPath: _loseTimerScript
+      value: 
+      objectReference: {fileID: 958363965}
+    - target: {fileID: 1266517880523221602, guid: 6f96c50c8570c294b8388bcc09aa3254,
+        type: 3}
+      propertyPath: _boxBehaviourScript
+      value: 
+      objectReference: {fileID: 4109261285870481261}
     - target: {fileID: 1578076123961512049, guid: 6f96c50c8570c294b8388bcc09aa3254,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -17272,6 +17299,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3434906000825459523, guid: 6f96c50c8570c294b8388bcc09aa3254,
+        type: 3}
+      propertyPath: m_UIInputModule
+      value: 
+      objectReference: {fileID: 296693462}
     - target: {fileID: 4743946056273507916, guid: 6f96c50c8570c294b8388bcc09aa3254,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -17405,6 +17437,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f7bab323b086b1f4fb568ff2079877a2, type: 3}
+--- !u!114 &4109261285870481261 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4540045650488458685, guid: f7bab323b086b1f4fb568ff2079877a2,
+    type: 3}
+  m_PrefabInstance: {fileID: 4109261285870481260}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a07863785e8f95d41a6d67f86b06be2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7694561300534104195
 PrefabInstance:
   m_ObjectHideFlags: 0
