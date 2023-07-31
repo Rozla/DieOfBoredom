@@ -153,7 +153,7 @@ public class SceneLoader : MonoBehaviour
 
     IEnumerator WinPanelCoroutine()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(6f);
         Win();
     } 
     IEnumerator LoosePanelCoroutine()

@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
-    //[SerializeField] AudioClip[] pnjVoiceClip;
-    //[SerializeField] AudioClip[] jingleClip;
+    [SerializeField] AudioClip pnjWinVoice;
+    [SerializeField] AudioClip pnjLooseVoice;
+    [SerializeField] AudioClip jingleWin;
+    [SerializeField] AudioClip jingleLoose;
     [SerializeField] AudioClip inGameMusicClip;
 
-    //[SerializeField] AudioSource pnjSource;
+    [SerializeField] AudioSource pnjSource;
     [SerializeField] AudioSource musicSource;
-    //[SerializeField] AudioSource jingleSource;
+    [SerializeField] AudioSource jingleSource;
     [SerializeField] AudioSource backgroundSource;
 
     [SerializeField] BoxBehaviour boxBehaviour;
@@ -21,8 +23,13 @@ public class SoundManager : MonoBehaviour
         backgroundSource.Play();
         musicSource.Play();
 
-        boxBehaviour._winEvent.AddListener(() => { 
-        
+        boxBehaviour._winEvent.AddListener(() => {
+            StartCoroutine(WinSoundCoroutine());
+        });
+
+        loseTimer._loseEvent.AddListener(() =>
+        {
+            StartCoroutine(LooseSoundCoroutine());
         });
     }
 
@@ -42,6 +49,21 @@ public class SoundManager : MonoBehaviour
             //PlayVoiceClip(1, 1f);
             //PlayJingleClip(1, .5f);
         }
+    }
+
+    IEnumerator WinSoundCoroutine()
+    {
+        yield return new WaitForSeconds(2.6f);
+        pnjSource.PlayOneShot(pnjWinVoice);
+        jingleSource.PlayOneShot(jingleWin);
+
+    } 
+    IEnumerator LooseSoundCoroutine()
+    {
+        yield return new WaitForSeconds(.2f);
+        pnjSource.PlayOneShot(pnjLooseVoice);
+        jingleSource.PlayOneShot(jingleLoose);
+
     }
 
     //private void PlayVoiceClip(int voiceIndex, float volume)
