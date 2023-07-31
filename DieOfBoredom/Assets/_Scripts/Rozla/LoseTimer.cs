@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.Collections;
 using UnityEngine;
-
+using UnityEngine.Events;
 
 public class LoseTimer : MonoBehaviour
 {
@@ -11,6 +11,7 @@ public class LoseTimer : MonoBehaviour
 
     //[Tooltip("Default value = 300f")]
 
+    public static UnityEvent _loseEvent;
 
     [Tooltip("Default value = 300f")]
     [SerializeField] float _timer = 300f;
@@ -26,6 +27,8 @@ public class LoseTimer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GameManager.GameLost || GameManager.GameWin) return;
+
         _timer -= Time.deltaTime;
         _minutes = Mathf.FloorToInt(_timer / 60f);
         _seconds = Mathf.FloorToInt(_timer % 60f);
@@ -34,6 +37,7 @@ public class LoseTimer : MonoBehaviour
 
         if (_timer <= 0f)
         {
+            _loseEvent.Invoke();
             if(!GameManager.GameWin) GameManager.GameLost = true;
         }
     }

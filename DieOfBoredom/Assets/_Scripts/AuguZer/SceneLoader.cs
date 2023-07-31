@@ -14,8 +14,13 @@ public class SceneLoader : MonoBehaviour
     [SerializeField] GameObject UIplayer;
     int _builtIndex;
 
+    UIGameBehaviour _uiGameScript;
+
     private void Awake()
     {
+
+        _uiGameScript = pauseMenu.transform.parent.GetComponent<Transform>().parent.GetComponent<UIGameBehaviour>(); 
+
         GameManager.GameWin = false;
         GameManager.GameLost = false;
 

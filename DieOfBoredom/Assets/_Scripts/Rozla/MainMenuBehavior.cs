@@ -29,7 +29,6 @@ public class MainMenuBehavior : MonoBehaviour
 
         if (_playerInput.currentControlScheme == _knmScheme)
         {
-            Debug.Log("Souris");
             _eventSystem.SetSelectedGameObject(null);
             Cursor.lockState = CursorLockMode.Confined;
             Cursor.visible = true;
@@ -37,7 +36,6 @@ public class MainMenuBehavior : MonoBehaviour
 
         if (_playerInput.currentControlScheme == _gamepadScheme)
         {
-            Debug.Log("Gamepad");
             _eventSystem.SetSelectedGameObject(_playButton.gameObject);
             Cursor.visible = false;
         }
@@ -47,7 +45,6 @@ public class MainMenuBehavior : MonoBehaviour
     {
         if (_playerInput.currentControlScheme == _knmScheme)
         {
-            Debug.Log("Souris");
             _eventSystem.SetSelectedGameObject(null);
             Cursor.lockState = CursorLockMode.Confined;
             Cursor.visible = true;
@@ -55,7 +52,6 @@ public class MainMenuBehavior : MonoBehaviour
 
         if (_playerInput.currentControlScheme == _gamepadScheme)
         {
-            Debug.Log("Gamepad");
             _eventSystem.SetSelectedGameObject(_playButton.gameObject);
             Cursor.visible = false;
         }
