@@ -125,7 +125,7 @@ public class SceneLoader : MonoBehaviour
         {
             UIplayer.SetActive(false);
         }
-        if (pauseMenu != null && !pauseMenu.activeInHierarchy)
+        if (pauseMenu != null && !pauseMenu.activeInHierarchy && !winMenu.activeInHierarchy && !looseMenu.activeInHierarchy)
         {
             pauseMenu.SetActive(true);
         }
