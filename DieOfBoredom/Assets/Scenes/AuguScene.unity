@@ -16489,6 +16489,11 @@ PrefabInstance:
       objectReference: {fileID: 1339021953300695330}
     - target: {fileID: 3767840243372368974, guid: 553ec0b109a948045800d5a8ce2f30e5,
         type: 3}
+      propertyPath: schoolBell
+      value: 
+      objectReference: {fileID: 8300000, guid: 8d8110a3c2833df4c9c16c38653777db, type: 3}
+    - target: {fileID: 3767840243372368974, guid: 553ec0b109a948045800d5a8ce2f30e5,
+        type: 3}
       propertyPath: musicSource
       value: 
       objectReference: {fileID: 355636738}

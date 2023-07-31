@@ -8,7 +8,7 @@ public class SoundManager : MonoBehaviour
     [SerializeField] AudioClip pnjLooseVoice;
     [SerializeField] AudioClip jingleWin;
     [SerializeField] AudioClip jingleLoose;
-    [SerializeField] AudioClip schollBell;
+    [SerializeField] AudioClip schoolBell;
     [SerializeField] AudioClip inGameMusicClip;
 
     [SerializeField] AudioSource pnjSource;
@@ -56,7 +56,7 @@ public class SoundManager : MonoBehaviour
     IEnumerator WinSoundCoroutine()
     {
         yield return new WaitForSeconds(2.6f);
-        ringSource.PlayOneShot(schollBell);
+        ringSource.PlayOneShot(schoolBell);
         yield return new WaitForSeconds(1f);
         pnjSource.PlayOneShot(pnjWinVoice);
         jingleSource.PlayOneShot(jingleWin);
