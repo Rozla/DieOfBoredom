@@ -25,15 +25,15 @@ public class SoundManager : MonoBehaviour
         {
             backgroundSource.Pause();
             musicSource.Pause();
-            PlayVoiceClip(0, .3f);
-            PlayJingleClip(0, 1f);
+            //PlayVoiceClip(0, .3f);
+            //PlayJingleClip(0, 1f);
         }
         if (GameManager.GameLost)
         {
             backgroundSource.Pause();
             musicSource.Pause();
-            PlayVoiceClip(1, 1f);
-            PlayJingleClip(1, .5f);
+            //PlayVoiceClip(1, 1f);
+            //PlayJingleClip(1, .5f);
         }
 
         Debug.Log(GameManager.GameLost);
@@ -42,10 +42,7 @@ public class SoundManager : MonoBehaviour
     private void PlayVoiceClip(int voiceIndex, float volume)
     {
         AudioClip clip = VoiceClip(voiceIndex);
-        if (!pnjSource.isPlaying)
-        {
-            pnjSource.PlayOneShot(clip, volume);
-        }
+        //StartCoroutine(StopLoop(clip, volume));
     }
     private void PlayJingleClip(int voiceIndex, float volume)
     {
@@ -64,4 +61,14 @@ public class SoundManager : MonoBehaviour
     {
         return jingleClip[index];
     }
+
+    //IEnumerator StopLoop(AudioClip clip, float volume)
+    //{
+    //    if (!pnjSource.isPlaying)
+    //    {
+    //        pnjSource.PlayOneShot(clip, volume);
+    //    }
+    //    yield return new WaitForSeconds(clip.length);
+    //    pnjSource.mute = true;
+    //}
 }

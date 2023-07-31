@@ -16,12 +16,26 @@ public class PNJBehavior : MonoBehaviour
     {
         if (GameManager.GameWin)
         {
-            animator.SetTrigger("WIN");
+            StartCoroutine(WinWaitCoroutine());
         }
 
         if (GameManager.GameLost)
         {
-            animator.SetTrigger("LOOSE");
+            StartCoroutine(LooseWaitCoroutine());
         }
+    }
+
+
+    IEnumerator WinWaitCoroutine()
+    {
+        yield return new WaitForSeconds(2.6f);
+        animator.SetTrigger("WIN");
+
+    }
+    IEnumerator LooseWaitCoroutine()
+    {
+        yield return new WaitForSeconds(3f);
+        animator.SetTrigger("LOOSE");
+
     }
 }
