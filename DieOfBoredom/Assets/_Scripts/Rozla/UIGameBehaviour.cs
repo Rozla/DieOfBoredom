@@ -19,6 +19,10 @@ public class UIGameBehaviour : MonoBehaviour
     [Header("Lose Menu")]
     [SerializeField] Button _tryAgainButton;
 
+    [Header("Objects in scene")]
+    [SerializeField] LoseTimer _loseTimerScript;
+    [SerializeField] BoxBehaviour _boxBehaviourScript;
+
     string _knmScheme = "Keyboard&Mouse";
     string _gamepadScheme = "Gamepad";
 
@@ -30,16 +34,15 @@ public class UIGameBehaviour : MonoBehaviour
         _eventSystem.SetSelectedGameObject(_continueButton.gameObject);
 
 
-        LoseTimer._loseEvent.AddListener(() =>
+        _loseTimerScript._loseEvent.AddListener(() =>
         {
             _eventSystem.SetSelectedGameObject(_tryAgainButton.gameObject);
         });
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-
+        _boxBehaviourScript._winEvent.AddListener(() =>
+        {
+            _eventSystem.SetSelectedGameObject(_nextLevelButton.gameObject);
+        });
     }
 
     void OnControlsChanged(UnityEngine.InputSystem.PlayerInput obj)

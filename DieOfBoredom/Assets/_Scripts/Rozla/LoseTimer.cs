@@ -11,7 +11,7 @@ public class LoseTimer : MonoBehaviour
 
     //[Tooltip("Default value = 300f")]
 
-    public static UnityEvent _loseEvent;
+    public UnityEvent _loseEvent;
 
     [Tooltip("Default value = 300f")]
     [SerializeField] float _timer = 300f;
@@ -37,7 +37,7 @@ public class LoseTimer : MonoBehaviour
 
         if (_timer <= 0f)
         {
-            _loseEvent.Invoke();
+            _loseEvent?.Invoke();
             if(!GameManager.GameWin) GameManager.GameLost = true;
         }
     }
