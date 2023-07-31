@@ -21,7 +21,7 @@ public class SoundManager : MonoBehaviour
         if (GameManager.GameLost)
         {
             PlayVoiceClip(1, 1f);
-            PlayJingleClip(1, 1f);
+            PlayJingleClip(1, .5f);
         }
     }
 
@@ -38,7 +38,7 @@ public class SoundManager : MonoBehaviour
         AudioClip clip = JingleClip(voiceIndex);
         if (!musicSource.isPlaying)
         {
-            pnjSource.PlayOneShot(clip, volume);
+            musicSource.PlayOneShot(clip, volume);
         }
     }
 
