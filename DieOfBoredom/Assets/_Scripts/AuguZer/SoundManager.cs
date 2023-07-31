@@ -11,6 +11,7 @@ public class SoundManager : MonoBehaviour
     [SerializeField] AudioSource musicSource;
 
 
+
     private void Update()
     {
         if (GameManager.GameWin)
@@ -23,6 +24,8 @@ public class SoundManager : MonoBehaviour
             PlayVoiceClip(1, 1f);
             PlayJingleClip(1, .5f);
         }
+
+        Debug.Log(GameManager.GameLost);
     }
 
     private void PlayVoiceClip(int voiceIndex, float volume)
@@ -32,7 +35,7 @@ public class SoundManager : MonoBehaviour
         {
             pnjSource.PlayOneShot(clip, volume);
         }
-    } 
+    }
     private void PlayJingleClip(int voiceIndex, float volume)
     {
         AudioClip clip = JingleClip(voiceIndex);
@@ -50,5 +53,4 @@ public class SoundManager : MonoBehaviour
     {
         return jingleClip[index];
     }
-
 }
