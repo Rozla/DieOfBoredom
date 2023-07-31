@@ -18,12 +18,12 @@ public class SceneLoader : MonoBehaviour
     [SerializeField] LoseTimer loseTimer;
 
     UIGameBehaviour _uiGameScript;
-    
+
 
     private void Awake()
     {
 
-        _uiGameScript = pauseMenu.transform.parent.GetComponent<Transform>().parent.GetComponent<UIGameBehaviour>(); 
+        _uiGameScript = pauseMenu.transform.parent.GetComponent<Transform>().parent.GetComponent<UIGameBehaviour>();
 
         GameManager.GameWin = false;
         GameManager.GameLost = false;
@@ -51,14 +51,21 @@ public class SceneLoader : MonoBehaviour
 
     private void Start()
     {
-        boxBehaviour._winEvent.AddListener(() =>{
-            StartCoroutine(WinPanelCoroutine());
-        });
-
-        loseTimer._loseEvent.AddListener(() =>
+        if (boxBehaviour != null)
         {
-            StartCoroutine(LoosePanelCoroutine());
-        });
+            boxBehaviour._winEvent.AddListener(() =>
+            {
+                StartCoroutine(WinPanelCoroutine());
+            });
+        }
+
+        if (loseTimer != null)
+        {
+            loseTimer._loseEvent.AddListener(() =>
+            {
+                StartCoroutine(LoosePanelCoroutine());
+            });
+        }
     }
     private void Update()
     {
@@ -104,24 +111,11 @@ public class SceneLoader : MonoBehaviour
 
     public void TryAgain()
     {
-        Time.timeScale = 1.0f;
-        looseMenu.SetActive(false);
-        _builtIndex = SceneManager.GetActiveScene().buildIndex;
-        SceneManager.LoadScene(_builtIndex);
-        UIplayer.SetActive(true);
-
+        StartCoroutine(TryAgainCoroutine());
     }
     public void Continue()
     {
-        Time.timeScale = 1f;
-        if (pauseMenu.activeInHierarchy)
-        {
-            pauseMenu.SetActive(false);
-        }
-        if (!UIplayer.activeInHierarchy)
-        {
-            UIplayer.SetActive(true);
-        }
+        StartCoroutine(ContinueCoroutine());
     }
 
     public void Pause()
@@ -131,7 +125,7 @@ public class SceneLoader : MonoBehaviour
         {
             UIplayer.SetActive(false);
         }
-        if (pauseMenu != null && !pauseMenu.activeInHierarchy)
+        if (pauseMenu != null && !pauseMenu.activeInHierarchy && !winMenu.activeInHierarchy && !looseMenu.activeInHierarchy)
         {
             pauseMenu.SetActive(true);
         }
@@ -140,7 +134,7 @@ public class SceneLoader : MonoBehaviour
     public void ExitGame()
     {
 #if UNITY_STANDALONE
-        Application.Quit();
+        StartCoroutine(ExitCoroutine());
 #endif
 
 #if UNITY_EDITOR
@@ -150,17 +144,47 @@ public class SceneLoader : MonoBehaviour
 
     IEnumerator LoadSceneCoroutine(int index)
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1.2f);
         Time.timeScale = 1f;
         SceneManager.LoadScene(index);
+    }
 
+    IEnumerator TryAgainCoroutine()
+    {
+        yield return new WaitForSeconds(1.2f);
+        Time.timeScale = 1.0f;
+        looseMenu.SetActive(false);
+        _builtIndex = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(_builtIndex);
+        UIplayer.SetActive(true);
+    }
+
+    IEnumerator ContinueCoroutine()
+    {
+        yield return new WaitForSeconds(1.2f);
+        Time.timeScale = 1f;
+        if (pauseMenu.activeInHierarchy)
+        {
+            pauseMenu.SetActive(false);
+        }
+        if (!UIplayer.activeInHierarchy)
+        {
+            UIplayer.SetActive(true);
+        }
+
+    }
+
+    IEnumerator ExitCoroutine()
+    {
+        yield return new WaitForSeconds(1.2f);
+        Application.Quit();
     }
 
     IEnumerator WinPanelCoroutine()
     {
         yield return new WaitForSeconds(6f);
         Win();
-    } 
+    }
     IEnumerator LoosePanelCoroutine()
     {
         yield return new WaitForSeconds(3f);
