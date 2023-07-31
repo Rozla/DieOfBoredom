@@ -16172,6 +16172,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fb63f4dbce137724fb81aadabe2227b9, type: 3}
+--- !u!82 &1339021953300695330 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 6995720187243101783, guid: fb63f4dbce137724fb81aadabe2227b9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1339021953300695329}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1865086193468232724
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16476,6 +16482,11 @@ PrefabInstance:
       propertyPath: pnjSource
       value: 
       objectReference: {fileID: 697037417}
+    - target: {fileID: 3767840243372368974, guid: 553ec0b109a948045800d5a8ce2f30e5,
+        type: 3}
+      propertyPath: ringSource
+      value: 
+      objectReference: {fileID: 1339021953300695330}
     - target: {fileID: 3767840243372368974, guid: 553ec0b109a948045800d5a8ce2f30e5,
         type: 3}
       propertyPath: musicSource

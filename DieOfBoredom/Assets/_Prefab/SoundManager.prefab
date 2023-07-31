@@ -48,10 +48,12 @@ MonoBehaviour:
   pnjLooseVoice: {fileID: 8300000, guid: 277c523ac93d3d6498466c01b71d4abd, type: 3}
   jingleWin: {fileID: 8300000, guid: 8685b310a24cce049b7092d547e7dc13, type: 3}
   jingleLoose: {fileID: 8300000, guid: ad5feba824979444cbaad4d8cd38b1e7, type: 3}
+  schollBell: {fileID: 8300000, guid: 8d8110a3c2833df4c9c16c38653777db, type: 3}
   inGameMusicClip: {fileID: 8300000, guid: 4fec5c37228054945adfc396f764e912, type: 3}
   pnjSource: {fileID: 0}
   musicSource: {fileID: 0}
   jingleSource: {fileID: 0}
   backgroundSource: {fileID: 0}
+  ringSource: {fileID: 0}
   boxBehaviour: {fileID: 0}
   loseTimer: {fileID: 0}
