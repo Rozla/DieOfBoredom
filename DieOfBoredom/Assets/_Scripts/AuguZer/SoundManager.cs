@@ -58,7 +58,7 @@ public class SoundManager : MonoBehaviour
         yield return new WaitForSeconds(2.6f);
         ringSource.PlayOneShot(schoolBell);
         yield return new WaitForSeconds(1f);
-        pnjSource.PlayOneShot(pnjWinVoice);
+        pnjSource.PlayOneShot(pnjWinVoice, .3f);
         jingleSource.PlayOneShot(jingleWin);
 
     } 
@@ -66,7 +66,7 @@ public class SoundManager : MonoBehaviour
     {
         yield return new WaitForSeconds(.2f);
         pnjSource.PlayOneShot(pnjLooseVoice);
-        jingleSource.PlayOneShot(jingleLoose);
+        jingleSource.PlayOneShot(jingleLoose, .3f);
 
     }
 
