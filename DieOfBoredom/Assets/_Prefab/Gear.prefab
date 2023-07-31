@@ -33,7 +33,7 @@ Transform:
   m_Children:
   - {fileID: 7147946936583512884}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &6473319708912657853
 SphereCollider:
@@ -50,11 +50,11 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.39804685
+  m_Radius: 0.5
   m_Center: {x: 0, y: 0.060818315, z: 0.25179935}
 --- !u!114 &-6270008765253455671
 MonoBehaviour:
@@ -80,6 +80,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0fa6c56d97caf04f857f5e127acdb17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _hasBeenPicked: 0
 --- !u!1001 &7257588884909556959
 PrefabInstance:
   m_ObjectHideFlags: 0

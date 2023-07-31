@@ -47,6 +47,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Interact Settings")]
     bool _isInteracting;
+    float _interactDuration;
 
 
 
@@ -161,10 +162,9 @@ public class PlayerMovement : MonoBehaviour
 
                 _currentSpeed = 0f;
 
-                _playerAnimController.SetTrigger("INTERACT");
                 _playerAnimController.SetBool("WALK", false);
 
-                StartCoroutine(InteractCor());
+                StartCoroutine(InteractCor(_interactDuration));
 
                 break;
         }
@@ -325,11 +325,15 @@ public class PlayerMovement : MonoBehaviour
         else if(go.tag == "Gear")
         {
             go.GetComponent<GearBehaviour>()._hasBeenPicked = true;
+            _playerAnimController.SetTrigger("PICKUP");
+            _interactDuration = .4f;
             TransitionToState(PlayerState.PICKUP);
         }
         else if(go.tag == "RingBox")
         {
             go.GetComponent<BoxBehaviour>().CheckGearLeft();
+            _playerAnimController.SetTrigger("INTERACT");
+            _interactDuration = 1.5f;
             TransitionToState(PlayerState.PICKUP);
         }
         else
@@ -389,7 +393,7 @@ public class PlayerMovement : MonoBehaviour
         float offset = moveXValue > 0f ? ( 1f * 1f) : (- 1f * 1f);
         Vector3 targetPos = new Vector3(transform.position.x + offset, transform.position.y, transform.position.z);
 
-        Quaternion currentRota = Quaternion.Euler(0f, 180f, 0f);
+        Quaternion currentRota = Quaternion.Euler(0f, 0, 0f);
         float offsetRota = moveXValue > 0f ? 90f : -90f;
         Quaternion targetRota = Quaternion.Euler(0f, offsetRota, 0f);
 
@@ -420,20 +424,20 @@ public class PlayerMovement : MonoBehaviour
 
         if(moveX < 0f)
         {
-            _leftArrow.SetActive(false);
-            _rightArrow.SetActive(true);
-        }
-        else if(moveX > 0f)
-        {
             _leftArrow.SetActive(true);
             _rightArrow.SetActive(false);
         }
+        else if(moveX > 0f)
+        {
+            _leftArrow.SetActive(false);
+            _rightArrow.SetActive(true);
+        }
     }
 
-    IEnumerator InteractCor()
+    IEnumerator InteractCor(float interactCorDuration)
     {
         _isInteracting = true;
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(interactCorDuration);
         _isInteracting = false;
     }
 }
