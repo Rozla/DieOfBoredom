@@ -9201,16 +9201,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 391e68ae91a1df94fad0b0bb4996684a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pnjVoiceClip:
-  - {fileID: 8300000, guid: 7f1d66f94dbfcd344b8a506e85d4f8be, type: 3}
-  - {fileID: 8300000, guid: 277c523ac93d3d6498466c01b71d4abd, type: 3}
-  jingleClip:
-  - {fileID: 8300000, guid: 8685b310a24cce049b7092d547e7dc13, type: 3}
-  - {fileID: 8300000, guid: ad5feba824979444cbaad4d8cd38b1e7, type: 3}
-  inGameMusicClip: {fileID: 0}
-  pnjSource: {fileID: 697037417}
+  inGameMusicClip: {fileID: 8300000, guid: 4fec5c37228054945adfc396f764e912, type: 3}
   musicSource: {fileID: 355636738}
-  jingleSource: {fileID: 1778855399}
   backgroundSource: {fileID: 635829429}
 --- !u!1001 &1139451220
 PrefabInstance:

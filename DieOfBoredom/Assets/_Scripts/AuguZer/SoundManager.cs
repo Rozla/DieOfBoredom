@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
-    [SerializeField] AudioClip[] pnjVoiceClip;
-    [SerializeField] AudioClip[] jingleClip;
+    //[SerializeField] AudioClip[] pnjVoiceClip;
+    //[SerializeField] AudioClip[] jingleClip;
     [SerializeField] AudioClip inGameMusicClip;
 
-    [SerializeField] AudioSource pnjSource;
+    //[SerializeField] AudioSource pnjSource;
     [SerializeField] AudioSource musicSource;
-    [SerializeField] AudioSource jingleSource;
+    //[SerializeField] AudioSource jingleSource;
     [SerializeField] AudioSource backgroundSource;
 
     private void Start()
@@ -37,28 +37,28 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-    private void PlayVoiceClip(int voiceIndex, float volume)
-    {
-        AudioClip clip = VoiceClip(voiceIndex);
-        //StartCoroutine(StopLoop(clip, volume));
-    }
-    private void PlayJingleClip(int voiceIndex, float volume)
-    {
-        AudioClip clip = JingleClip(voiceIndex);
-        if (!jingleSource.isPlaying)
-        {
-            jingleSource.PlayOneShot(clip, volume);
-        }
-    }
+    //private void PlayVoiceClip(int voiceIndex, float volume)
+    //{
+    //    AudioClip clip = VoiceClip(voiceIndex);
+    //    StartCoroutine(StopLoop(clip, volume));
+    //}
+    //private void PlayJingleClip(int voiceIndex, float volume)
+    //{
+    //    AudioClip clip = JingleClip(voiceIndex);
+    //    if (!jingleSource.isPlaying)
+    //    {
+    //        jingleSource.PlayOneShot(clip, volume);
+    //    }
+    //}
 
-    private AudioClip VoiceClip(int index)
-    {
-        return pnjVoiceClip[index];
-    }
-    private AudioClip JingleClip(int index)
-    {
-        return jingleClip[index];
-    }
+    //private AudioClip VoiceClip(int index)
+    //{
+    //    return pnjVoiceClip[index];
+    //}
+    //private AudioClip JingleClip(int index)
+    //{
+    //    return jingleClip[index];
+    //}
 
     //IEnumerator StopLoop(AudioClip clip, float volume)
     //{
