@@ -35,7 +35,7 @@ public class PlayerSoundsAndParticles : MonoBehaviour
     {
         AudioClip clip = RandomCrouchStepClip();
         _audioSource.pitch = Random.Range(.7f, 1.3f);
-        _audioSource.volume = Random.Range(.05f, .1f);
+        _audioSource.volume = Random.Range(.1f, .2f);
         _audioSource.PlayOneShot(clip);
     }
 
@@ -43,7 +43,7 @@ public class PlayerSoundsAndParticles : MonoBehaviour
     {
         AudioClip clip = RandomChairClip();
         _audioSource.pitch = Random.Range(.9f, 1.1f);
-        _audioSource.volume = Random.Range(.1f, .3f);
+        _audioSource.volume = Random.Range(.3f, .5f);
         _audioSource.PlayOneShot(clip);
     }
 
@@ -51,7 +51,7 @@ public class PlayerSoundsAndParticles : MonoBehaviour
     {
         AudioClip clip = RandomGearClip();
         _audioSource.pitch = Random.Range(.9f, 1.1f);
-        _audioSource.volume = Random.Range(.1f, .3f);
+        _audioSource.volume = Random.Range(.3f, .5f);
         _audioSource.PlayOneShot(clip);
     }
 
