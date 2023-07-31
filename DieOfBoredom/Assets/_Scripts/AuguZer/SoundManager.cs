@@ -35,8 +35,6 @@ public class SoundManager : MonoBehaviour
             //PlayVoiceClip(1, 1f);
             //PlayJingleClip(1, .5f);
         }
-
-        Debug.Log(GameManager.GameLost);
     }
 
     private void PlayVoiceClip(int voiceIndex, float volume)

@@ -8,6 +8,10 @@ using UnityEngine;
 public class LoseTimer : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI _timerText;
+    [SerializeField] AudioClip loosePnjVoice;
+    [SerializeField] AudioClip looseJingle;
+
+    AudioSource audioSource;
 
     //[Tooltip("Default value = 300f")]
 
@@ -20,7 +24,7 @@ public class LoseTimer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -34,7 +38,22 @@ public class LoseTimer : MonoBehaviour
 
         if (_timer <= 0f)
         {
-            if(!GameManager.GameWin) GameManager.GameLost = true;
+            if (!GameManager.GameWin)
+            {
+                GameManager.GameLost = true;
+                StartCoroutine(LooseSound());
+            }
         }
+    }
+
+    IEnumerator LooseSound()
+    {
+        if (!audioSource.isPlaying)
+        {
+            audioSource.PlayOneShot(loosePnjVoice);
+            audioSource.PlayOneShot(looseJingle);
+        }
+        yield return new WaitForSeconds(looseJingle.length);
+        audioSource.mute = true;
     }
 }
