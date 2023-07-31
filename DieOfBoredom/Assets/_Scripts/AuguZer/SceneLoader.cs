@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
+using System;
 
 
 public class SceneLoader : MonoBehaviour
@@ -27,6 +28,8 @@ public class SceneLoader : MonoBehaviour
 
         GameManager.GameWin = false;
         GameManager.GameLost = false;
+
+        _builtIndex = SceneManager.GetActiveScene().buildIndex;
 
         if (pauseMenu != null)
         {
@@ -77,6 +80,7 @@ public class SceneLoader : MonoBehaviour
             }
         }
 
+        Debug.Log(_builtIndex);
         //Win();
         //Loose();
     }
@@ -101,21 +105,34 @@ public class SceneLoader : MonoBehaviour
 
     public void LoadScene(int buildIndex)
     {
-        StartCoroutine(LoadSceneCoroutine(buildIndex));
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(buildIndex);
     }
     public void NextLevel()
     {
-        Debug.Log("NextLevel");
-        //SceneManager.LoadScene(_builtIndex + 1);
+        LoadScene(_builtIndex + 1);
     }
 
     public void TryAgain()
     {
-        StartCoroutine(TryAgainCoroutine());
+        Time.timeScale = 1.0f;
+        looseMenu.SetActive(false);
+        _builtIndex = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(_builtIndex);
+        UIplayer.SetActive(true);
     }
     public void Continue()
     {
-        StartCoroutine(ContinueCoroutine());
+        Time.timeScale = 1f;
+        if (pauseMenu.activeInHierarchy)
+        {
+            pauseMenu.SetActive(false);
+        }
+        if (!UIplayer.activeInHierarchy)
+        {
+            UIplayer.SetActive(true);
+        }
+
     }
 
     public void Pause()
@@ -140,38 +157,6 @@ public class SceneLoader : MonoBehaviour
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #endif
-    }
-
-    IEnumerator LoadSceneCoroutine(int index)
-    {
-        yield return new WaitForSeconds(1.2f);
-        Time.timeScale = 1f;
-        SceneManager.LoadScene(index);
-    }
-
-    IEnumerator TryAgainCoroutine()
-    {
-        yield return new WaitForSeconds(1.2f);
-        Time.timeScale = 1.0f;
-        looseMenu.SetActive(false);
-        _builtIndex = SceneManager.GetActiveScene().buildIndex;
-        SceneManager.LoadScene(_builtIndex);
-        UIplayer.SetActive(true);
-    }
-
-    IEnumerator ContinueCoroutine()
-    {
-        yield return new WaitForSeconds(1.2f);
-        Time.timeScale = 1f;
-        if (pauseMenu.activeInHierarchy)
-        {
-            pauseMenu.SetActive(false);
-        }
-        if (!UIplayer.activeInHierarchy)
-        {
-            UIplayer.SetActive(true);
-        }
-
     }
 
     IEnumerator ExitCoroutine()
