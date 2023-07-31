@@ -64,7 +64,7 @@ public class EnemyStateMachine : MonoBehaviour
         isRotating = true;
         float elapsedTime = 0;
         Quaternion startRotation = transform.rotation;
-        animator.SetTrigger("TurnLeft");
+        animator.SetTrigger("LeftTurn");
         while (elapsedTime < rotationTime)
         {
             transform.rotation = Quaternion.Slerp(startRotation, targetRotation, elapsedTime / rotationTime);
