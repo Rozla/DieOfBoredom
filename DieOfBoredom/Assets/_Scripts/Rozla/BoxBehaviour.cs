@@ -8,8 +8,6 @@ public class BoxBehaviour : MonoBehaviour
     [SerializeField] AudioClip[] _boxClipsGood;
     [SerializeField] AudioClip winPnjVoice;
     [SerializeField] AudioClip winJingle;
-    [SerializeField] AudioClip loosePnjVoice;
-    [SerializeField] AudioClip looseJingle;
 
 
     AudioSource _boxAudioSource;

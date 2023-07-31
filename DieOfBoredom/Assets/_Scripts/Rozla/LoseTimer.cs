@@ -34,7 +34,7 @@ public class LoseTimer : MonoBehaviour
 
         if (_timer <= 0f)
         {
-            GameManager.GameLost = true;
+            if(!GameManager.GameWin) GameManager.GameLost = true;
         }
     }
 }
