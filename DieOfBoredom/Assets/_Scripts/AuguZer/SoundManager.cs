@@ -13,10 +13,17 @@ public class SoundManager : MonoBehaviour
     //[SerializeField] AudioSource jingleSource;
     [SerializeField] AudioSource backgroundSource;
 
+    [SerializeField] BoxBehaviour boxBehaviour;
+    [SerializeField] LoseTimer loseTimer;
+
     private void Start()
     {
         backgroundSource.Play();
         musicSource.Play();
+
+        boxBehaviour._winEvent.AddListener(() => { 
+        
+        });
     }
 
     private void Update()

@@ -465,6 +465,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 4109261285870481260}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &98930411 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4540045650488458685, guid: f7bab323b086b1f4fb568ff2079877a2,
+    type: 3}
+  m_PrefabInstance: {fileID: 4109261285870481260}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a07863785e8f95d41a6d67f86b06be2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &106925924 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5011010586194983592, guid: 6f96c50c8570c294b8388bcc09aa3254,
@@ -7591,7 +7603,7 @@ PrefabInstance:
     - target: {fileID: 6417722440490720166, guid: 728b49beaf231d745a23bb7d337215e2,
         type: 3}
       propertyPath: _timer
-      value: 30
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6417722440490720166, guid: 728b49beaf231d745a23bb7d337215e2,
         type: 3}
@@ -9038,6 +9050,8 @@ MonoBehaviour:
   inGameMusicClip: {fileID: 8300000, guid: 4fec5c37228054945adfc396f764e912, type: 3}
   musicSource: {fileID: 355636738}
   backgroundSource: {fileID: 635829429}
+  boxBehaviour: {fileID: 98930411}
+  loseTimer: {fileID: 2076187712}
 --- !u!1001 &1139451220
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16017,6 +16031,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2076187712 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6417722440490720166, guid: 728b49beaf231d745a23bb7d337215e2,
+    type: 3}
+  m_PrefabInstance: {fileID: 958363964}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2076187705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b47ae7ad002a0ff439a55cda4d8427dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2076327750
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17207,6 +17233,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: UIGame
       objectReference: {fileID: 0}
+    - target: {fileID: 1266517880523221602, guid: 6f96c50c8570c294b8388bcc09aa3254,
+        type: 3}
+      propertyPath: _eventSystem
+      value: 
+      objectReference: {fileID: 296693460}
+    - target: {fileID: 1266517880523221602, guid: 6f96c50c8570c294b8388bcc09aa3254,
+        type: 3}
+      propertyPath: _loseTimerScript
+      value: 
+      objectReference: {fileID: 2076187712}
+    - target: {fileID: 1266517880523221602, guid: 6f96c50c8570c294b8388bcc09aa3254,
+        type: 3}
+      propertyPath: _boxBehaviourScript
+      value: 
+      objectReference: {fileID: 98930411}
     - target: {fileID: 1578076123961512049, guid: 6f96c50c8570c294b8388bcc09aa3254,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -17272,6 +17313,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3434906000825459523, guid: 6f96c50c8570c294b8388bcc09aa3254,
+        type: 3}
+      propertyPath: m_UIInputModule
+      value: 
+      objectReference: {fileID: 296693462}
     - target: {fileID: 4743946056273507916, guid: 6f96c50c8570c294b8388bcc09aa3254,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -17430,9 +17476,19 @@ PrefabInstance:
       objectReference: {fileID: 106925924}
     - target: {fileID: 4045319884049990697, guid: 0399b3f6b5bca894db99319f6635ef36,
         type: 3}
+      propertyPath: loseTimer
+      value: 
+      objectReference: {fileID: 2076187712}
+    - target: {fileID: 4045319884049990697, guid: 0399b3f6b5bca894db99319f6635ef36,
+        type: 3}
       propertyPath: pauseMenu
       value: 
       objectReference: {fileID: 998844280}
+    - target: {fileID: 4045319884049990697, guid: 0399b3f6b5bca894db99319f6635ef36,
+        type: 3}
+      propertyPath: boxBehaviour
+      value: 
+      objectReference: {fileID: 98930411}
     - target: {fileID: 6274304384605216423, guid: 0399b3f6b5bca894db99319f6635ef36,
         type: 3}
       propertyPath: m_Name
