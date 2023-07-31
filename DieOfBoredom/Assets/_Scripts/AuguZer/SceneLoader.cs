@@ -94,8 +94,7 @@ public class SceneLoader : MonoBehaviour
 
     public void LoadScene(int buildIndex)
     {
-        Time.timeScale = 1f;
-        SceneManager.LoadScene(buildIndex);
+        StartCoroutine(LoadSceneCoroutine(buildIndex));
     }
     public void NextLevel()
     {
@@ -149,7 +148,13 @@ public class SceneLoader : MonoBehaviour
 #endif
     }
 
+    IEnumerator LoadSceneCoroutine(int index)
+    {
+        yield return new WaitForSeconds(1.5f);
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(index);
 
+    }
 
     IEnumerator WinPanelCoroutine()
     {
