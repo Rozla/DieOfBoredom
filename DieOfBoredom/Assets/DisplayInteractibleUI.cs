@@ -9,6 +9,7 @@ public class DisplayInteractibleUI : MonoBehaviour
     [SerializeField] float _offsetX = 0f;
     [SerializeField] float _offsetY = 1f;
 
+    SphereCollider _sphereCollider;
     GameObject _canva;
     TextMeshProUGUI _interactText;
 
@@ -20,6 +21,7 @@ public class DisplayInteractibleUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        _sphereCollider = GetComponent<SphereCollider>();
         _canva = transform.GetChild(0).gameObject;
         _interactText = _canva.transform.GetChild(0).transform.GetChild(0).transform.GetComponent<TextMeshProUGUI>();
         _mainCam = Camera.main;
@@ -28,8 +30,26 @@ public class DisplayInteractibleUI : MonoBehaviour
         _interactText.transform.position = _displayPos;
     }
 
-    void DisplayText()
+    void DisplayText(bool value)
     {
-        _canva.SetActive(true);
+        _interactText.enabled = value;
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.layer == 7)
+        {
+            DisplayText(true);
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.layer == 7)
+        {
+            DisplayText(false);
+        }
+    }
+
+
 }

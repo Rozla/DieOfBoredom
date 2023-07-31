@@ -88,8 +88,6 @@ MonoBehaviour:
   _boxClipsGood:
   - {fileID: 8300000, guid: e7f634361219e3d4d875c1d681ac0262, type: 3}
   - {fileID: 8300000, guid: 7caa06779a029af4ab793f3c885cde05, type: 3}
-  winPnjVoice: {fileID: 0}
-  winJingle: {fileID: 0}
   _winEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -319,7 +317,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3229294567414043422}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
@@ -468,8 +466,8 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 1.7782356
+  m_Center: {x: -0.6489719, y: 0, z: -0.6292635}
 --- !u!1 &7368721564475697375
 GameObject:
   m_ObjectHideFlags: 0
@@ -488,7 +486,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2670788920836047021
 RectTransform:
   m_ObjectHideFlags: 0

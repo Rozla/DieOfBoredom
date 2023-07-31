@@ -47,8 +47,6 @@ public class UIGameBehaviour : MonoBehaviour
 
     void OnControlsChanged(UnityEngine.InputSystem.PlayerInput obj)
     {
-
-
         if (_continueButton.isActiveAndEnabled)
         {
             if (_playerInput.currentControlScheme == _knmScheme)
