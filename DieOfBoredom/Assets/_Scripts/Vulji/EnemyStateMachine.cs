@@ -14,21 +14,21 @@ public class EnemyStateMachine : MonoBehaviour
     [SerializeField] EnemyState currentState;
     public float minTimeToTurn = 5f;
     public float maxTimeToTurn = 15f;
+    public float cooldownTime = 5f;
 
     public float timeToTurn;
-    public float turningTime =0.5f;
+    public float turningTime = 0.5f;
     public float timeBeforeLookingBack = 5f;
+    private float lastTurnTime;
 
     private PlayerMovement playerMovement;
     private BoxCollider detectionZone;
     private Animator animator;
 
-    private bool previousBoard;
-    private bool previousClass;
     private bool isRotating;
-    
-
-     private Quaternion targetRotation;
+    private Quaternion targetRotation;
+    private EnemyState previousState;
+    private bool isWaitingForTurn = false;
 
     private void Awake()
     {
@@ -43,18 +43,22 @@ public class EnemyStateMachine : MonoBehaviour
 
     private IEnumerator WaitForTurn()
     {
-        if (!isRotating)
+        isWaitingForTurn = true;
+
+        while (true)
         {
-            while (true)
+            if (!isRotating && Time.time - lastTurnTime >= cooldownTime)
             {
                 timeToTurn = Random.Range(minTimeToTurn, maxTimeToTurn);
                 yield return new WaitForSeconds(timeToTurn);
+                lastTurnTime = Time.time;
                 TransitionToState(EnemyState.Turn);
             }
+            else
+            {
+                yield return null;
+            }
         }
-
-        yield return new WaitForSeconds(5f);
-
     }
 
     private IEnumerator RotateTowardsTarget(Quaternion targetRotation, float rotationTime)
@@ -64,7 +68,7 @@ public class EnemyStateMachine : MonoBehaviour
         isRotating = true;
         float elapsedTime = 0;
         Quaternion startRotation = transform.rotation;
-        animator.SetTrigger("TurnLeft");
+
         while (elapsedTime < rotationTime)
         {
             transform.rotation = Quaternion.Slerp(startRotation, targetRotation, elapsedTime / rotationTime);
@@ -75,25 +79,21 @@ public class EnemyStateMachine : MonoBehaviour
         transform.rotation = targetRotation;
 
         isRotating = false;
-
-        yield return new WaitForSeconds(5f);
     }
 
     private IEnumerator LookClassCoroutine()
     {
-
         if (isRotating) yield break;
 
         if (!playerMovement._isSitting)
         {
             TransitionToState(EnemyState.Angry);
+            yield break;
         }
+
         yield return new WaitForSeconds(timeBeforeLookingBack);
 
         TransitionToState(EnemyState.Turn);
-
-        yield return new WaitForSeconds(5f);
-
     }
 
     private void Update()
@@ -101,12 +101,15 @@ public class EnemyStateMachine : MonoBehaviour
         OnStateUpdate();
     }
 
-    void OnStateEnter()
+    private void OnStateEnter()
     {
         switch (currentState)
         {
             case EnemyState.LookBoard:
-                StartCoroutine(WaitForTurn());
+                if (!isWaitingForTurn)
+                {
+                    StartCoroutine(WaitForTurn());
+                }
                 break;
             case EnemyState.Turn:
                 targetRotation = transform.rotation * Quaternion.Euler(0, 180, 0);
@@ -114,8 +117,8 @@ public class EnemyStateMachine : MonoBehaviour
                 StartCoroutine(RotateTowardsTarget(targetRotation, turningTime));
                 break;
             case EnemyState.LookClass:
-                timeBeforeLookingBack = 5f;
                 StartCoroutine(LookClassCoroutine());
+                animator.SetBool("NoClass", true);
                 break;
             case EnemyState.Angry:
                 Debug.Log("You Lose");
@@ -127,20 +130,20 @@ public class EnemyStateMachine : MonoBehaviour
         }
     }
 
-    void OnStateUpdate()
+    private void OnStateUpdate()
     {
         switch (currentState)
         {
             case EnemyState.LookBoard:
                 break;
             case EnemyState.Turn:
-                if (isRotating == false)
+                if (!isRotating)
                 {
-                    if (previousBoard)
+                    if (previousState == EnemyState.LookBoard)
                     {
                         TransitionToState(EnemyState.LookClass);
                     }
-                    else if (previousClass)
+                    else
                     {
                         TransitionToState(EnemyState.LookBoard);
                     }
@@ -155,19 +158,16 @@ public class EnemyStateMachine : MonoBehaviour
         }
     }
 
-    void OnStateExit()
+    private void OnStateExit()
     {
         switch (currentState)
         {
             case EnemyState.LookBoard:
-                previousBoard = true;
                 break;
             case EnemyState.Turn:
-                previousBoard = false;
-                previousClass = false;
                 break;
             case EnemyState.LookClass:
-                previousClass = true;
+                animator.SetBool("NoClass", false);
                 break;
             case EnemyState.Angry:
                 break;
@@ -176,9 +176,10 @@ public class EnemyStateMachine : MonoBehaviour
         }
     }
 
-    void TransitionToState(EnemyState nextState)
+    private void TransitionToState(EnemyState nextState)
     {
         OnStateExit();
+        previousState = currentState;
         currentState = nextState;
         OnStateEnter();
     }
