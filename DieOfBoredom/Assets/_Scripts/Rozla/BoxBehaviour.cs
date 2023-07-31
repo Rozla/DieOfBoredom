@@ -48,7 +48,7 @@ public class BoxBehaviour : MonoBehaviour
     {
         AudioClip clip = RandomBoxClipGood();
         _boxAudioSource.pitch = Random.Range(.9f, 1.1f);
-        _boxAudioSource.volume = Random.Range(.1f, .3f);
+        _boxAudioSource.volume = Random.Range(.1f, .2f);
         _boxAudioSource.PlayOneShot(clip);
     }
 
