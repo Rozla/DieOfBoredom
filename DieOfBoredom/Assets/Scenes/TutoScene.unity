@@ -551,7 +551,8 @@ MonoBehaviour:
     the schoolbell ring.
 
 
-    But be carefull... Your time is running out.'
+    But be carefull... Your time is running out before
+    you die of boredom.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9b84b2890a085c74db3e92a63750cd60, type: 2}
   m_sharedMaterial: {fileID: 7831202608524432069, guid: 9b84b2890a085c74db3e92a63750cd60,
