@@ -92,7 +92,7 @@ public class PlayerMovement : MonoBehaviour
 
         BoxBehaviour.BoxInstance._winEvent.AddListener(() =>
         {
-            TransitionToState(PlayerState.WIN);
+            StartCoroutine(WinCor());
         });
 
         LoseTimer.Instance._loseEvent.AddListener(() =>
@@ -213,6 +213,8 @@ public class PlayerMovement : MonoBehaviour
         switch (_currentState)
         {
             case PlayerState.IDLE:
+
+                if (GameManager.GameWin) return;
 
                 if(GetPlayerInputs.MoveInputs != Vector2.zero && !GetPlayerInputs.CrouchInput)
                 {
@@ -485,5 +487,29 @@ public class PlayerMovement : MonoBehaviour
         _isInteracting = true;
         yield return new WaitForSeconds(interactCorDuration);
         _isInteracting = false;
+    }
+
+    IEnumerator WinCor()
+    {
+        _playerCC.enabled = false;
+        yield return new WaitForSeconds(1f);
+
+        Quaternion currentRota = transform.rotation;
+        Quaternion targetRota = Quaternion.Euler(0f, 180f, 0f);
+        float timer = 0f;
+        float maxTimer = 1f;
+
+        while(timer < maxTimer)
+        {
+            transform.rotation = Quaternion.Slerp(currentRota, targetRota, timer / maxTimer);
+
+            timer += Time.deltaTime;
+            yield return null;
+        }
+
+
+
+        yield return new WaitForSeconds(1f);
+        TransitionToState(PlayerState.WIN);
     }
 }
