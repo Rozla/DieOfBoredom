@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
 
 
     [Header("State Machine")]
-    public PlayerState _currentState;
+    [SerializeField] PlayerState _currentState;
 
     [Space]
     [Space]
