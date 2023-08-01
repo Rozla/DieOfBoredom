@@ -2125,18 +2125,6 @@ PrefabInstance:
       value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 9628951694555204, guid: e07e4e7fd6b9d58489dd9f32ef2b5b0c, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 9628951694555204, guid: e07e4e7fd6b9d58489dd9f32ef2b5b0c, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 9628951694555204, guid: e07e4e7fd6b9d58489dd9f32ef2b5b0c, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 9628951694555204, guid: e07e4e7fd6b9d58489dd9f32ef2b5b0c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 7.402
       objectReference: {fileID: 0}
@@ -2176,19 +2164,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9628951694555204, guid: e07e4e7fd6b9d58489dd9f32ef2b5b0c, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 822441121234838270, guid: e07e4e7fd6b9d58489dd9f32ef2b5b0c,
         type: 3}
       propertyPath: m_Name
       value: Blackboard_A
-      objectReference: {fileID: 0}
-    - target: {fileID: 822441121234838270, guid: e07e4e7fd6b9d58489dd9f32ef2b5b0c,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
