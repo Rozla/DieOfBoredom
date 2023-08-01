@@ -79,8 +79,6 @@ public class SceneLoader : MonoBehaviour
                 Pause();
             }
         }
-
-        Debug.Log(_builtIndex);
         //Win();
         //Loose();
     }
