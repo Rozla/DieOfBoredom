@@ -151,6 +151,10 @@ public class NewEnemyState : MonoBehaviour
                 }
                 break;
             case EnemyState.LookClass:
+                if (!playerMovement._isSitting)
+                {
+                    TransitionToState(EnemyState.Angry);
+                }
                 break;
             case EnemyState.Angry:
                 break;

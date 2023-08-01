@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4352971480851496423}
+  - component: {fileID: 8398572684316612944}
   m_Layer: 0
   m_Name: Teacher
   m_TagString: Untagged
@@ -25,13 +26,32 @@ Transform:
   m_GameObject: {fileID: 1979618146358514235}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalScale: {x: 7.5, y: 7.5, z: 7.5}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 6826260197476475592}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8398572684316612944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1979618146358514235}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02f690774a0cd524e93d77ff8586af01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentState: 0
+  minTimeToTurn: 5
+  maxTimeToTurn: 15
+  cooldownTime: 5
+  timeToTurn: 0
+  turningTime: 0.5
+  timeBeforeLookingBack: 5
 --- !u!1001 &6426924770239202595
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -100,6 +120,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Scary_Teacher-1
       objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: 1982963faca3a58489df67bab01de6ff,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: f96ba02b4db25164b89e9f2ddd44c22e, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
