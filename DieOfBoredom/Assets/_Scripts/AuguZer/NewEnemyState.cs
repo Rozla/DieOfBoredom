@@ -9,7 +9,8 @@ public class NewEnemyState : MonoBehaviour
         LookBoard,
         Turn,
         LookClass,
-        Angry
+        Angry,
+        Sad
     }
 
     [SerializeField] EnemyState currentState;
@@ -122,25 +123,24 @@ public class NewEnemyState : MonoBehaviour
                 animator.SetBool("NoClass", true);
                 break;
             case EnemyState.Angry:
-                RandomAnim();
+                GameManager.GameLost = true;
+                animator.SetTrigger("Angry");
                 StopAllCoroutines();
+                break;
+            case EnemyState.Sad:
+
                 break;
             default:
                 break;
         }
     }
 
-    private void RandomAnim()
-    {
-        animator.SetTrigger("Angry");
-        int index = Random.Range(1, 2);
-        animator.SetInteger("AnimIndex", index);
-    }
     private void OnStateUpdate()
     {
         switch (currentState)
         {
             case EnemyState.LookBoard:
+
                 break;
             case EnemyState.Turn:
                 if (!isRotating)
@@ -163,6 +163,8 @@ public class NewEnemyState : MonoBehaviour
                 break;
             case EnemyState.Angry:
                 break;
+            case EnemyState.Sad:
+                break;
             default:
                 break;
         }
@@ -180,6 +182,8 @@ public class NewEnemyState : MonoBehaviour
                 animator.SetBool("NoClass", false);
                 break;
             case EnemyState.Angry:
+                break;
+            case EnemyState.Sad:
                 break;
             default:
                 break;
