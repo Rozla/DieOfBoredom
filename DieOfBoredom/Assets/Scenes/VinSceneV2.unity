@@ -1868,6 +1868,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Teacher
       objectReference: {fileID: 0}
+    - target: {fileID: 1979618146358514235, guid: ab661ca9b48b8e54b885065d9a51a3d8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4352971480851496423, guid: ab661ca9b48b8e54b885065d9a51a3d8,
         type: 3}
       propertyPath: m_RootOrder
@@ -1886,7 +1891,7 @@ PrefabInstance:
     - target: {fileID: 4352971480851496423, guid: ab661ca9b48b8e54b885065d9a51a3d8,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.89
+      value: 7.42
       objectReference: {fileID: 0}
     - target: {fileID: 4352971480851496423, guid: ab661ca9b48b8e54b885065d9a51a3d8,
         type: 3}
