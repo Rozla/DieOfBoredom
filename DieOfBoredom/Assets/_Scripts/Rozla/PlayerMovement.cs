@@ -377,6 +377,7 @@ public class PlayerMovement : MonoBehaviour
         else if(go.tag == "Gear")
         {
             go.GetComponent<GearBehaviour>()._hasBeenPicked = true;
+            UIPlayerBehaviour.Instance._gearsAnimator.SetTrigger("ROTATE");
             _playerAnimController.SetTrigger("PICKUP");
             _interactDuration = .4f;
             TransitionToState(PlayerState.PICKUP);
