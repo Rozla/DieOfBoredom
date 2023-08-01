@@ -6248,6 +6248,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Blackboard_A
       objectReference: {fileID: 0}
+    - target: {fileID: 2684666929566295889, guid: e07e4e7fd6b9d58489dd9f32ef2b5b0c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8168227673185303119, guid: e07e4e7fd6b9d58489dd9f32ef2b5b0c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
