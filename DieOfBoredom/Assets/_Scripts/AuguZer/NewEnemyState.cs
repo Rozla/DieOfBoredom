@@ -164,7 +164,7 @@ public class NewEnemyState : MonoBehaviour
                 }
                 break;
             case EnemyState.Turn:
-                animator.SetTrigger("Left");
+                animator.SetTrigger("Turn");
                 detectionZone.enabled = false;
                 targetRotation = transform.rotation * Quaternion.Euler(0, 180, 0);
                 turningTime = 0.5f;
