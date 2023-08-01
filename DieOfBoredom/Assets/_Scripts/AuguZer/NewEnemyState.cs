@@ -45,6 +45,8 @@ public class NewEnemyState : MonoBehaviour
     [SerializeField] ParticleSystem _questionParticles;
     bool _setParticle;
 
+    [SerializeField] AudioClip questionClip;
+    [SerializeField] AudioSource teacherSource;
 
     private void Awake()
     {
@@ -79,8 +81,11 @@ public class NewEnemyState : MonoBehaviour
             {
                 timeToTurn = Random.Range(minTimeToTurn, maxTimeToTurn);
                 yield return new WaitForSeconds(timeToTurn - 3f);
+                teacherSource.pitch = .8f;
+                teacherSource.PlayOneShot(questionClip);
                 _questionParticles.gameObject.SetActive(true);
                 yield return new WaitForSeconds(3f);
+                teacherSource.pitch = 1f;
                 _questionParticles.gameObject.SetActive(false);
                 lastTurnTime = Time.time;
                 TransitionToState(EnemyState.Turn);

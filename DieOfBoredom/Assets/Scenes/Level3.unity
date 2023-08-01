@@ -5556,6 +5556,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameAudioManager
       objectReference: {fileID: 0}
+    - target: {fileID: 2324665237088696949, guid: fb63f4dbce137724fb81aadabe2227b9,
+        type: 3}
+      propertyPath: m_Pitch
+      value: 0.8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6113,6 +6118,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8398572684316612944, guid: ab661ca9b48b8e54b885065d9a51a3d8,
         type: 3}
+      propertyPath: questionClip
+      value: 
+      objectReference: {fileID: 8300000, guid: f23efdc933ba49945a8fef620e6f4568, type: 3}
+    - target: {fileID: 8398572684316612944, guid: ab661ca9b48b8e54b885065d9a51a3d8,
+        type: 3}
       propertyPath: maxTimeToTurn
       value: 20
       objectReference: {fileID: 0}
@@ -6121,6 +6131,11 @@ PrefabInstance:
       propertyPath: minTimeToTurn
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 8398572684316612944, guid: ab661ca9b48b8e54b885065d9a51a3d8,
+        type: 3}
+      propertyPath: teacherSource
+      value: 
+      objectReference: {fileID: 533592553}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
