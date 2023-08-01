@@ -1,9 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class NewEnemyState : MonoBehaviour
 {
+
+    public static NewEnemyState Instance { get; private set; }
+
     enum EnemyState
     {
         LookBoard,
@@ -35,8 +39,22 @@ public class NewEnemyState : MonoBehaviour
 
     private bool playerInZone;
 
+    public UnityEvent _angryEvent;
+
+
     private void Awake()
     {
+
+        if(Instance != null && Instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            Instance = this;
+        }
+
+
         animator = GetComponentInChildren<Animator>();
         //playerMovement = FindObjectOfType<PlayerMovement>();
         detectionZone = GetComponent<BoxCollider>();
@@ -159,6 +177,7 @@ public class NewEnemyState : MonoBehaviour
             case EnemyState.Angry:
                 GameManager.GameLost = true;
                 LoseTimer.Instance._loseEvent?.Invoke();
+                _angryEvent?.Invoke();
                 transform.LookAt(PlayerMovement.Instance.transform.position);
                 animator.SetTrigger("Angry");
                 StopAllCoroutines();

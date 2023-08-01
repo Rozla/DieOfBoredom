@@ -1275,6 +1275,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gearsAnimator: {fileID: 4560306698314215874}
+  _teacherDisplay: {fileID: 2605268535155441059}
 --- !u!1 &7347833930004404144
 GameObject:
   m_ObjectHideFlags: 0
