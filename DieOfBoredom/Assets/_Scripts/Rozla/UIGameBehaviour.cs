@@ -23,6 +23,10 @@ public class UIGameBehaviour : MonoBehaviour
     [SerializeField] LoseTimer _loseTimerScript;
     [SerializeField] BoxBehaviour _boxBehaviourScript;
 
+    [Header("Posture Images")]
+    [SerializeField] GameObject _gamePadImg;
+    [SerializeField] GameObject _knmImg;
+
     string _knmScheme = "Keyboard&Mouse";
     string _gamepadScheme = "Gamepad";
 
@@ -51,8 +55,18 @@ public class UIGameBehaviour : MonoBehaviour
     {
         if (PlayerMovement.Instance == null) return;
 
-        if(_playerInput.currentControlScheme == _knmScheme) _currentScheme = _knmScheme;
-        if (_playerInput.currentControlScheme == _gamepadScheme) _currentScheme = _gamepadScheme;
+        if (_playerInput.currentControlScheme == _knmScheme)
+        {
+            _currentScheme = _knmScheme;
+            _gamePadImg.SetActive(false);
+            _knmImg.SetActive(true);
+        }
+        if (_playerInput.currentControlScheme == _gamepadScheme)
+        {
+            _currentScheme = _gamepadScheme;
+            _gamePadImg.SetActive(true);
+            _knmImg.SetActive(false);
+        }
 
         if (_continueButton.isActiveAndEnabled)
         {

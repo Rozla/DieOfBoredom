@@ -41,6 +41,10 @@ public class NewEnemyState : MonoBehaviour
 
     public UnityEvent _angryEvent;
 
+    [Header("Particles")]
+    [SerializeField] ParticleSystem _questionParticles;
+    bool _setParticle;
+
 
     private void Awake()
     {
@@ -74,7 +78,10 @@ public class NewEnemyState : MonoBehaviour
             if (!isRotating && Time.time - lastTurnTime >= cooldownTime)
             {
                 timeToTurn = Random.Range(minTimeToTurn, maxTimeToTurn);
-                yield return new WaitForSeconds(timeToTurn);
+                yield return new WaitForSeconds(timeToTurn - 3f);
+                _questionParticles.gameObject.SetActive(true);
+                yield return new WaitForSeconds(3f);
+                _questionParticles.gameObject.SetActive(false);
                 lastTurnTime = Time.time;
                 TransitionToState(EnemyState.Turn);
             }
@@ -115,7 +122,9 @@ public class NewEnemyState : MonoBehaviour
             yield break;
         }
 
+        
         yield return new WaitForSeconds(timeBeforeLookingBack);
+        
 
         TransitionToState(EnemyState.Turn);
     }
