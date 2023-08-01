@@ -53,6 +53,9 @@ public class PlayerMovement : MonoBehaviour
 
     public bool _isCrouching;
 
+    [Header("Particles")]
+    [SerializeField] GameObject _sweatParticles;
+
 
     public enum PlayerState
     {
@@ -165,6 +168,8 @@ public class PlayerMovement : MonoBehaviour
 
                 _playerAnimController.SetBool("WALK", true);
                 _playerAnimController.SetBool("CROUCH", false);
+
+                _sweatParticles.SetActive(true);
 
                 break;
             case PlayerState.CROUCHIDLE:
@@ -329,6 +334,7 @@ public class PlayerMovement : MonoBehaviour
             case PlayerState.IDLE:
                 break;
             case PlayerState.WALK:
+                _sweatParticles.SetActive(false);
                 break;
             case PlayerState.CROUCHIDLE:
                 _isCrouching = false;
