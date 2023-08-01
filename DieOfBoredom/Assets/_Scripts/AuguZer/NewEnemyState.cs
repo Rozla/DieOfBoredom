@@ -36,6 +36,7 @@ public class NewEnemyState : MonoBehaviour
     {
         animator = GetComponentInChildren<Animator>();
         //playerMovement = FindObjectOfType<PlayerMovement>();
+        detectionZone = GetComponent<BoxCollider>();
     }
 
     private void Start()
@@ -115,22 +116,47 @@ public class NewEnemyState : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            if (!PlayerMovement.Instance._isCrouching)
+            {
+                TransitionToState(EnemyState.Angry);
+            }
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            if (!PlayerMovement.Instance._isCrouching)
+            {
+                TransitionToState(EnemyState.Angry);
+            }
+        }
+    }
+
     private void OnStateEnter()
     {
         switch (currentState)
         {
             case EnemyState.LookBoard:
+                detectionZone.enabled = true;
                 if (!isWaitingForTurn)
                 {
                     StartCoroutine(WaitForTurn());
                 }
                 break;
             case EnemyState.Turn:
+                detectionZone.enabled = false;
                 targetRotation = transform.rotation * Quaternion.Euler(0, 180, 0);
                 turningTime = 0.5f;
                 StartCoroutine(RotateTowardsTarget(targetRotation, turningTime));
                 break;
             case EnemyState.LookClass:
+                detectionZone.enabled = false;
                 StartCoroutine(LookClassCoroutine());
                 animator.SetBool("NoClass", true);
                 break;

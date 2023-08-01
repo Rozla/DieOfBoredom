@@ -51,7 +51,7 @@ public class PlayerMovement : MonoBehaviour
     bool _isInteracting;
     float _interactDuration;
 
-
+    public bool _isCrouching;
 
 
     public enum PlayerState
@@ -169,6 +169,7 @@ public class PlayerMovement : MonoBehaviour
                 break;
             case PlayerState.CROUCHIDLE:
 
+                _isCrouching = true;
                 _currentSpeed = 0f;
 
                 _playerAnimController.SetBool("WALK", false);
@@ -177,6 +178,7 @@ public class PlayerMovement : MonoBehaviour
                 break;
             case PlayerState.CROUCH:
 
+                _isCrouching = true;
                 _currentSpeed = _crouchSpeed;
 
                 _playerAnimController.SetBool("WALK", true);
@@ -328,8 +330,10 @@ public class PlayerMovement : MonoBehaviour
             case PlayerState.WALK:
                 break;
             case PlayerState.CROUCHIDLE:
+                _isCrouching = false;
                 break;
             case PlayerState.CROUCH:
+                _isCrouching = false;
                 break;
             case PlayerState.SIT:
                 break;

@@ -2578,6 +2578,33 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 246756129}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &254600659 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1979618146358514235, guid: ab661ca9b48b8e54b885065d9a51a3d8,
+    type: 3}
+  m_PrefabInstance: {fileID: 1749805950}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &254600662
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 254600659}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.8017691, y: 1, z: 0.5604794}
+  m_Center: {x: -0.21251664, y: 0, z: -0.10384357}
 --- !u!1001 &270861609
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2805,7 +2832,7 @@ PrefabInstance:
     - target: {fileID: 1835218795052884317, guid: 69374d9e6c122d6458d2417868ebe7e1,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.359
+      value: -0.47
       objectReference: {fileID: 0}
     - target: {fileID: 1835218795052884317, guid: 69374d9e6c122d6458d2417868ebe7e1,
         type: 3}
@@ -11591,7 +11618,7 @@ PrefabInstance:
     - target: {fileID: 1835218795052884317, guid: 69374d9e6c122d6458d2417868ebe7e1,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.823
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 1835218795052884317, guid: 69374d9e6c122d6458d2417868ebe7e1,
         type: 3}
@@ -16873,7 +16900,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1979618146358514235, guid: ab661ca9b48b8e54b885065d9a51a3d8,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 254600662}
   m_SourcePrefab: {fileID: 100100000, guid: ab661ca9b48b8e54b885065d9a51a3d8, type: 3}
 --- !u!1001 &1752593257
 PrefabInstance:
