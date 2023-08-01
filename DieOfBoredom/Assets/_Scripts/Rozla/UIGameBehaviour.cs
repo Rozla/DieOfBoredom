@@ -49,6 +49,8 @@ public class UIGameBehaviour : MonoBehaviour
 
     void OnControlsChanged(UnityEngine.InputSystem.PlayerInput obj)
     {
+        if (PlayerMovement.Instance == null) return;
+
         if(_playerInput.currentControlScheme == _knmScheme) _currentScheme = _knmScheme;
         if (_playerInput.currentControlScheme == _gamepadScheme) _currentScheme = _gamepadScheme;
 

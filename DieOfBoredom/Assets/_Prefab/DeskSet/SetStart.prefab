@@ -319,7 +319,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Interact
+  m_text: Sit / Stand
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: eb4982ada7951fa449c6edaab48bf36a, type: 2}
   m_sharedMaterial: {fileID: 4410488283201599743, guid: eb4982ada7951fa449c6edaab48bf36a,

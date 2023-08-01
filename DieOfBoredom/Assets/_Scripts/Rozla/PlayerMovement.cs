@@ -397,10 +397,6 @@ public class PlayerMovement : MonoBehaviour
             _interactDuration = 1.5f;
             TransitionToState(PlayerState.PICKUP);
         }
-        else
-        {
-            Debug.LogError("Pas d'objet");
-        }
     }
 
 
