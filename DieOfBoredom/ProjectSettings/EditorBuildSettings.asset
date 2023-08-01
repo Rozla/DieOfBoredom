@@ -16,6 +16,9 @@ EditorBuildSettings:
     guid: d08565febf19c134993aa659c487ef7e
   - enabled: 1
     path: Assets/Scenes/Level2.unity
+    guid: fe507d7c011961a4eb66de8a907ba864
+  - enabled: 0
+    path: Assets/Scenes/Level2_OLD.unity
     guid: 5dd375b9ba45b9644bc77fb84e6ab461
   - enabled: 0
     path: Assets/Scenes/AuguScene.unity
