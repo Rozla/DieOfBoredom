@@ -31,7 +31,7 @@ Transform:
   m_Children:
   - {fileID: 6826260197476475592}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8398572684316612944
 MonoBehaviour:
@@ -137,7 +137,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1982963faca3a58489df67bab01de6ff,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 8485772475248673167}
+      addedObject: {fileID: 2496760534412792374}
   m_SourcePrefab: {fileID: 100100000, guid: 1982963faca3a58489df67bab01de6ff, type: 3}
 --- !u!1 &6192572457317660786 stripped
 GameObject:
@@ -145,7 +145,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 6426924770239202595}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8485772475248673167
+--- !u!114 &2496760534412792374
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -154,13 +154,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 6192572457317660786}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a40b682aa652ed468ea7d38cc68a28a, type: 3}
+  m_Script: {fileID: 11500000, guid: 65c2ae30648c81b4e850dbb5a1366615, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  voice1: {fileID: 8300000, guid: 50dcd790112db384f982f75e3c54c49d, type: 3}
-  voice2: {fileID: 0}
-  voice3: {fileID: 0}
-  voiceSource: {fileID: 0}
+  angryVoice:
+  - {fileID: 8300000, guid: 50dcd790112db384f982f75e3c54c49d, type: 3}
+  - {fileID: 8300000, guid: b453107a74a3c11469d007e10b8ce881, type: 3}
+  - {fileID: 8300000, guid: 30a68137535ecfb4da661020304ea695, type: 3}
+  sadVoice:
+  - {fileID: 8300000, guid: 93a4ddeabc4c9c4448bd1b8eab6e7710, type: 3}
+  - {fileID: 8300000, guid: a4d547a38eca4534d967ed17bce51094, type: 3}
+  - {fileID: 8300000, guid: b475c2093c5c36444b085d6a8359e7db, type: 3}
+  teacherSource: {fileID: 0}
 --- !u!4 &6826260197476475592 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1982963faca3a58489df67bab01de6ff,
