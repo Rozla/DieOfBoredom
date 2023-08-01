@@ -170,7 +170,7 @@ public class SceneLoader : MonoBehaviour
     }
     IEnumerator LoosePanelCoroutine()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(8f);
         Loose();
     }
 }
