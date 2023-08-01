@@ -32,6 +32,9 @@ public class NewEnemyState : MonoBehaviour
     private EnemyState previousState;
     private bool isWaitingForTurn = false;
 
+
+    private bool playerInZone;
+
     private void Awake()
     {
         animator = GetComponentInChildren<Animator>();
@@ -120,21 +123,14 @@ public class NewEnemyState : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            if (!PlayerMovement.Instance._isCrouching)
-            {
-                TransitionToState(EnemyState.Angry);
-            }
+           playerInZone = true;
         }
     }
-
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.tag == "Player")
         {
-            if (!PlayerMovement.Instance._isCrouching)
-            {
-                TransitionToState(EnemyState.Angry);
-            }
+            playerInZone = false;
         }
     }
 
@@ -163,6 +159,7 @@ public class NewEnemyState : MonoBehaviour
             case EnemyState.Angry:
                 GameManager.GameLost = true;
                 LoseTimer.Instance._loseEvent?.Invoke();
+                transform.LookAt(PlayerMovement.Instance.transform.position);
                 animator.SetTrigger("Angry");
                 StopAllCoroutines();
                 break;
@@ -179,7 +176,10 @@ public class NewEnemyState : MonoBehaviour
         switch (currentState)
         {
             case EnemyState.LookBoard:
-
+                if (playerInZone && !PlayerMovement.Instance._isCrouching)
+                {
+                    TransitionToState(EnemyState.Angry);
+                }
                 break;
             case EnemyState.Turn:
                 if (!isRotating)
