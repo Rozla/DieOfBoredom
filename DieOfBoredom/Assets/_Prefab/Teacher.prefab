@@ -161,7 +161,7 @@ Transform:
   - {fileID: 6826260197476475592}
   - {fileID: 9024307652820489043}
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8398572684316612944
 MonoBehaviour:
@@ -176,11 +176,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 0
-  minTimeToTurn: 5
-  maxTimeToTurn: 15
+  minTimeToTurn: 10
+  maxTimeToTurn: 20
   cooldownTime: 5
   timeToTurn: 0
-  turningTime: 0.5
+  turningTime: 1
   timeBeforeLookingBack: 5
   _angryEvent:
     m_PersistentCalls:
@@ -204,8 +204,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.8017691, y: 1, z: 0.5604794}
-  m_Center: {x: -0.21251664, y: 0, z: -0.10384357}
+  m_Size: {x: 1.8017691, y: 1, z: 0.5636663}
+  m_Center: {x: -0.21251664, y: 0, z: -0.10543653}
 --- !u!1001 &6426924770239202595
 PrefabInstance:
   m_ObjectHideFlags: 0
