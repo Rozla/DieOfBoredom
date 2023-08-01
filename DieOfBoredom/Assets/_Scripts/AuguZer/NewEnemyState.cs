@@ -22,7 +22,7 @@ public class NewEnemyState : MonoBehaviour
     public float timeBeforeLookingBack = 5f;
     private float lastTurnTime;
 
-    private PlayerMovement playerMovement;
+    //private PlayerMovement playerMovement;
     private BoxCollider detectionZone;
     private Animator animator;
 
@@ -34,7 +34,7 @@ public class NewEnemyState : MonoBehaviour
     private void Awake()
     {
         animator = GetComponentInChildren<Animator>();
-        playerMovement = FindObjectOfType<PlayerMovement>();
+        //playerMovement = FindObjectOfType<PlayerMovement>();
     }
 
     private void Start()
@@ -86,7 +86,7 @@ public class NewEnemyState : MonoBehaviour
     {
         if (isRotating) yield break;
 
-        if (!playerMovement._isSitting)
+        if (!PlayerMovement.Instance._isSitting)
         {
             TransitionToState(EnemyState.Angry);
             yield break;
@@ -122,8 +122,7 @@ public class NewEnemyState : MonoBehaviour
                 animator.SetBool("NoClass", true);
                 break;
             case EnemyState.Angry:
-                Debug.Log("You Lose");
-                animator.SetTrigger("Angry");
+                RandomAnim();
                 StopAllCoroutines();
                 break;
             default:
@@ -131,6 +130,12 @@ public class NewEnemyState : MonoBehaviour
         }
     }
 
+    private void RandomAnim()
+    {
+        animator.SetTrigger("Angry");
+        int index = Random.Range(1, 2);
+        animator.SetInteger("AnimIndex", index);
+    }
     private void OnStateUpdate()
     {
         switch (currentState)
@@ -151,7 +156,7 @@ public class NewEnemyState : MonoBehaviour
                 }
                 break;
             case EnemyState.LookClass:
-                if (!playerMovement._isSitting)
+                if (!PlayerMovement.Instance._isSitting)
                 {
                     TransitionToState(EnemyState.Angry);
                 }

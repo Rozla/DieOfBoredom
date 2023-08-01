@@ -8,7 +8,7 @@ public class MenuSounds : MonoBehaviour
     [SerializeField] AudioClip voice2;
     [SerializeField] AudioClip voice3;
     [SerializeField] private AudioSource voiceSource;
- 
+
     private void Voice1()
     {
         voiceSource.PlayOneShot(voice1);
