@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class BoxBehaviour : MonoBehaviour
 {
+    public static BoxBehaviour BoxInstance { get; private set; }
+
     [SerializeField] AudioClip[] _boxClipsWrong;
     [SerializeField] AudioClip[] _boxClipsGood;
     //[SerializeField] AudioClip winPnjVoice;
@@ -15,6 +18,17 @@ public class BoxBehaviour : MonoBehaviour
 
     public UnityEvent _winEvent;
 
+    private void Awake()
+    {
+        if(BoxInstance != null && BoxInstance != this) 
+        {
+            Destroy(this);
+        }
+        else
+        {
+            BoxInstance = this;
+        }
+    }
 
     // Start is called before the first frame update
     void Start()

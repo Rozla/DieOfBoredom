@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public static PlayerMovement Instance { get; private set; }
+
     CharacterController _playerCC;
     Transform _playerGraphics;
     Animator _playerAnimController;
@@ -59,7 +61,21 @@ public class PlayerMovement : MonoBehaviour
         CROUCHIDLE,
         CROUCH,
         SIT,
-        PICKUP
+        PICKUP,
+        WIN,
+        LOSE
+    }
+
+    private void Awake()
+    {
+        if(Instance != null && Instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            Instance = this;
+        }
     }
 
     // Start is called before the first frame update
@@ -72,6 +88,19 @@ public class PlayerMovement : MonoBehaviour
         _playerCC = GetComponent<CharacterController>();
         _playerGraphics = transform.GetChild(0).transform;
         _playerAnimController = _playerGraphics.GetComponent<Animator>();
+
+
+        BoxBehaviour.BoxInstance._winEvent.AddListener(() =>
+        {
+            TransitionToState(PlayerState.WIN);
+        });
+
+        LoseTimer.Instance._loseEvent.AddListener(() =>
+        {
+            TransitionToState(PlayerState.LOSE);
+        });
+
+
     }
 
     // Update is called once per frame
@@ -80,7 +109,7 @@ public class PlayerMovement : MonoBehaviour
 
         OnStateUpdate();
 
-        if(!_isSitting && !_isInteracting)
+        if(!_isSitting && !_isInteracting && !GameManager.GameLost && !GameManager.GameWin)
         {
             RotatePlayer();
         }
@@ -110,7 +139,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(!_isSitting && !_isInteracting)
+        if(!_isSitting && !_isInteracting && !GameManager.GameLost && !GameManager.GameWin)
         {
             _playerCC.Move(MoveVector().normalized * _currentSpeed * Time.deltaTime);
         }
@@ -169,6 +198,12 @@ public class PlayerMovement : MonoBehaviour
 
                 StartCoroutine(InteractCor(_interactDuration));
 
+                break;
+            case PlayerState.WIN:
+                _playerAnimController.SetTrigger("WIN");
+                break;
+            case PlayerState.LOSE:
+                _playerAnimController.SetTrigger("LOSE");
                 break;
         }
     }
@@ -275,6 +310,10 @@ public class PlayerMovement : MonoBehaviour
                 }
 
                 break;
+            case PlayerState.WIN:
+                break;
+            case PlayerState.LOSE:
+                break;
         }
     }
 
@@ -293,6 +332,10 @@ public class PlayerMovement : MonoBehaviour
             case PlayerState.SIT:
                 break;
             case PlayerState.PICKUP:
+                break;
+            case PlayerState.WIN:
+                break;
+            case PlayerState.LOSE:
                 break;
         }
     }
