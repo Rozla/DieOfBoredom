@@ -48,7 +48,7 @@ public class PlayerMovement : MonoBehaviour
     [Space]
 
     [Header("Interact Settings")]
-    bool _isInteracting;
+    public bool _isInteracting;
     float _interactDuration;
 
     public bool _isCrouching;
@@ -194,6 +194,7 @@ public class PlayerMovement : MonoBehaviour
                 break;
             case PlayerState.PICKUP:
 
+                _isCrouching = true;
                 _currentSpeed = 0f;
 
                 _playerAnimController.SetBool("WALK", false);
@@ -338,6 +339,7 @@ public class PlayerMovement : MonoBehaviour
             case PlayerState.SIT:
                 break;
             case PlayerState.PICKUP:
+                _isCrouching = false;
                 break;
             case PlayerState.WIN:
                 break;
