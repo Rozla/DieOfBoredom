@@ -15206,7 +15206,8 @@ PrefabInstance:
       propertyPath: minTimeToTurn
       value: 10
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2496760534412792374, guid: ab661ca9b48b8e54b885065d9a51a3d8, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:

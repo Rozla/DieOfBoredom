@@ -11,6 +11,7 @@ public class EnemySound : MonoBehaviour
     private void Voice1()
     {
         AudioClip clip = RandomAngryVoice();
+        if (clip == null) return;
         teacherSource.PlayOneShot(clip);
 
     }
@@ -18,11 +19,14 @@ public class EnemySound : MonoBehaviour
     private void Voice2()
     {
         AudioClip clip = RandomSadVoice();
+        if (clip == null) return;
         teacherSource.PlayOneShot(clip);
     }
 
     private void Voice3()
     {
+        AudioClip clip = teacherSource.clip;
+        if (clip == null) return;
         
     }
     private AudioClip RandomAngryVoice()
