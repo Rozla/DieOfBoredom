@@ -633,16 +633,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: UIGame
       objectReference: {fileID: 0}
-    - target: {fileID: 1218088669121554963, guid: 6f96c50c8570c294b8388bcc09aa3254,
-        type: 3}
-      propertyPath: m_fontColor.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1218088669121554963, guid: 6f96c50c8570c294b8388bcc09aa3254,
-        type: 3}
-      propertyPath: m_fontColor32.rgba
-      value: 3758096383
-      objectReference: {fileID: 0}
     - target: {fileID: 1266517880523221602, guid: 6f96c50c8570c294b8388bcc09aa3254,
         type: 3}
       propertyPath: _eventSystem
@@ -766,11 +756,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7564032329065345434, guid: 6f96c50c8570c294b8388bcc09aa3254,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1016048821}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f96c50c8570c294b8388bcc09aa3254, type: 3}
 --- !u!1001 &107936372
 PrefabInstance:
@@ -8147,33 +8133,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1349888365}
   m_SourcePrefab: {fileID: 100100000, guid: dc35c61ecac9f3e4ea7e96c2ce7f1218, type: 3}
---- !u!1 &1016048817 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7564032329065345434, guid: 6f96c50c8570c294b8388bcc09aa3254,
-    type: 3}
-  m_PrefabInstance: {fileID: 99728122}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &1016048821
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1016048817}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 3776a1367c47ed44282d09c95ec856f1, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &1042509725
 PrefabInstance:
   m_ObjectHideFlags: 0
