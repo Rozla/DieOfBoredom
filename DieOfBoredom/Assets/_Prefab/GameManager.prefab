@@ -33,7 +33,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1323821165793744686
 MonoBehaviour:
@@ -60,10 +60,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _timerText: {fileID: 0}
+  _timerDisplayObject: {fileID: 0}
   _loseEvent:
     m_PersistentCalls:
       m_Calls: []
-  _timer: 30
+  _timer: 40
+  _displayTime: 30
 --- !u!114 &3618177969565018620
 MonoBehaviour:
   m_ObjectHideFlags: 0
