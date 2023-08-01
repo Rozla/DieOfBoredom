@@ -742,7 +742,7 @@ GameObject:
   - component: {fileID: 132758597}
   - component: {fileID: 132758600}
   m_Layer: 0
-  m_Name: Spot Light (2)
+  m_Name: Spot Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4412,8 +4412,9 @@ GameObject:
   - component: {fileID: 528184095}
   - component: {fileID: 528184094}
   - component: {fileID: 528184093}
+  - component: {fileID: 528184096}
   m_Layer: 0
-  m_Name: Spot Light
+  m_Name: Spot Light2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4519,6 +4520,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!95 &528184096
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 528184092}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 46b4810093a25a140947b6a1eb8aaf05, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!82 &533592553 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 2324665237088696949, guid: fb63f4dbce137724fb81aadabe2227b9,
