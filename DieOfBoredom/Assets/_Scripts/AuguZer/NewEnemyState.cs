@@ -98,9 +98,21 @@ public class NewEnemyState : MonoBehaviour
         TransitionToState(EnemyState.Turn);
     }
 
+    IEnumerator SadCoroutine()
+    {
+        yield return new WaitForSeconds(3.2f);
+        Quaternion targetRotation = Quaternion.Euler(0, 180, 0);
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 1f);
+        animator.SetTrigger("Sad");
+    }
+
     private void Update()
     {
         OnStateUpdate();
+        if (GameManager.GameWin)
+        {
+            TransitionToState(EnemyState.Sad);
+        }
     }
 
     private void OnStateEnter()
@@ -124,11 +136,12 @@ public class NewEnemyState : MonoBehaviour
                 break;
             case EnemyState.Angry:
                 GameManager.GameLost = true;
+                LoseTimer.Instance._loseEvent?.Invoke();
                 animator.SetTrigger("Angry");
                 StopAllCoroutines();
                 break;
             case EnemyState.Sad:
-
+                StartCoroutine(SadCoroutine());
                 break;
             default:
                 break;
