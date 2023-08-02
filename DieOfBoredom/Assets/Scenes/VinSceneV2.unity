@@ -5826,6 +5826,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Set0 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1890118505729629059, guid: 3aeacf99f9bac0545ba5df0615d806e5,
+        type: 3}
+      propertyPath: m_Radius
+      value: 1.08
+      objectReference: {fileID: 0}
     - target: {fileID: 6368001290454096387, guid: 3aeacf99f9bac0545ba5df0615d806e5,
         type: 3}
       propertyPath: m_RootOrder
@@ -17265,6 +17270,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9134510242358866249, guid: f7bab323b086b1f4fb568ff2079877a2,
+        type: 3}
+      propertyPath: m_Radius
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
