@@ -110,7 +110,7 @@ Transform:
   - {fileID: 4900143250157975238}
   - {fileID: 4535931175763758859}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &9134510242358866249
 SphereCollider:
@@ -131,8 +131,8 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.4757917
-  m_Center: {x: -0.07, y: 0.18, z: -0.02}
+  m_Radius: 0.6
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &4540045650488458685
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -623,8 +623,8 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 1.18
-  m_Center: {x: -0.6489719, y: 0, z: -0.6292635}
+  m_Radius: 1.2
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7368721564475697375
 GameObject:
   m_ObjectHideFlags: 0
