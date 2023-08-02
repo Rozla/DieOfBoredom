@@ -140,6 +140,8 @@ public class NewEnemyState : MonoBehaviour
         Quaternion targetRotation = Quaternion.Euler(0, 180, 0);
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 1f);
         animator.SetTrigger("Sad");
+        yield return new WaitForSeconds(1f);
+        StopAllCoroutines();
     }
 
     private void Update()
