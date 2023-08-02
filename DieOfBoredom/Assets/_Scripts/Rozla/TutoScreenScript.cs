@@ -35,7 +35,6 @@ public class TutoScreenScript : MonoBehaviour
 
         if (!_canCheck) return;
 
-        Debug.Log(_playerInput.currentControlScheme);
 
         if (_playerInput.currentControlScheme == _gamePad)
         {

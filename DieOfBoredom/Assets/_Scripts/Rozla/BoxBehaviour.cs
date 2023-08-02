@@ -49,7 +49,6 @@ public class BoxBehaviour : MonoBehaviour
         if (GearsManager._allGears.Count > 0)
         {
             PlayWrongSound();
-            Debug.Log("Il reste des engrenages");
         }
 
         if (GearsManager._allGears.Count == 0)

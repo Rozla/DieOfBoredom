@@ -80,8 +80,6 @@ public class SceneLoader : MonoBehaviour
                 Pause();
             }
         }
-        //Win();
-        //Loose();
     }
 
     private void Win()
