@@ -26,7 +26,6 @@ public class TutoScreenScript : MonoBehaviour
         StartCoroutine(ScreenCor());
 
         Cursor.lockState = CursorLockMode.Confined;
-        Cursor.visible = false;
     }
 
 

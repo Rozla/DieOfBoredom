@@ -33,7 +33,7 @@ Transform:
   - {fileID: 6549526835902870645}
   - {fileID: 1043577946262300376}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1266517880523221602
 MonoBehaviour:
@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _eventSystem: {fileID: 0}
+  _postureCanva: {fileID: 7564032329065345434}
   _continueButton: {fileID: 1885442296140053660}
   _nextLevelButton: {fileID: 1578076123961512049}
   _tryAgainButton: {fileID: 6193880626597297289}
