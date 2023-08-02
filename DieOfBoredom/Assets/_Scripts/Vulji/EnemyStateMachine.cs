@@ -1,14 +1,18 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class EnemyStateMachine : MonoBehaviour
 {
+    public static EnemyStateMachine Instance { get; private set; }
+
     enum EnemyState
     {
         LookBoard,
         Turn,
         LookClass,
-        Angry
+        Angry,
+        Sad
     }
 
     [SerializeField] EnemyState currentState;
@@ -21,7 +25,7 @@ public class EnemyStateMachine : MonoBehaviour
     public float timeBeforeLookingBack = 5f;
     private float lastTurnTime;
 
-    private PlayerMovement playerMovement;
+    //private PlayerMovement playerMovement;
     private BoxCollider detectionZone;
     private Animator animator;
 
@@ -30,10 +34,34 @@ public class EnemyStateMachine : MonoBehaviour
     private EnemyState previousState;
     private bool isWaitingForTurn = false;
 
+
+    private bool playerInZone;
+
+    public UnityEvent _angryEvent;
+
+    [Header("Particles")]
+    [SerializeField] ParticleSystem _questionParticles;
+    bool _setParticle;
+
+    [SerializeField] AudioClip questionClip;
+    [SerializeField] AudioSource teacherSource;
+
     private void Awake()
     {
+
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            Instance = this;
+        }
+
+
         animator = GetComponentInChildren<Animator>();
-        playerMovement = FindObjectOfType<PlayerMovement>();
+        //playerMovement = FindObjectOfType<PlayerMovement>();
+        detectionZone = GetComponent<BoxCollider>();
     }
 
     private void Start()
@@ -50,7 +78,13 @@ public class EnemyStateMachine : MonoBehaviour
             if (!isRotating && Time.time - lastTurnTime >= cooldownTime)
             {
                 timeToTurn = Random.Range(minTimeToTurn, maxTimeToTurn);
-                yield return new WaitForSeconds(timeToTurn);
+                yield return new WaitForSeconds(timeToTurn - 3f);
+                teacherSource.pitch = .8f;
+                teacherSource.PlayOneShot(questionClip);
+                _questionParticles.gameObject.SetActive(true);
+                yield return new WaitForSeconds(3f);
+                teacherSource.pitch = 1f;
+                _questionParticles.gameObject.SetActive(false);
                 lastTurnTime = Time.time;
                 TransitionToState(EnemyState.Turn);
             }
@@ -85,20 +119,49 @@ public class EnemyStateMachine : MonoBehaviour
     {
         if (isRotating) yield break;
 
-        if (!playerMovement._isSitting)
+        if (!PlayerMovement.Instance._isSitting)
         {
             TransitionToState(EnemyState.Angry);
             yield break;
         }
 
+
         yield return new WaitForSeconds(timeBeforeLookingBack);
 
+
         TransitionToState(EnemyState.Turn);
+    }
+
+    IEnumerator SadCoroutine()
+    {
+        yield return new WaitForSeconds(3.2f);
+        Quaternion targetRotation = Quaternion.Euler(0, 180, 0);
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 1f);
+        animator.SetTrigger("Sad");
     }
 
     private void Update()
     {
         OnStateUpdate();
+        if (GameManager.GameWin)
+        {
+            TransitionToState(EnemyState.Sad);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            playerInZone = true;
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            playerInZone = false;
+        }
     }
 
     private void OnStateEnter()
@@ -106,24 +169,34 @@ public class EnemyStateMachine : MonoBehaviour
         switch (currentState)
         {
             case EnemyState.LookBoard:
+                detectionZone.enabled = true;
                 if (!isWaitingForTurn)
                 {
                     StartCoroutine(WaitForTurn());
                 }
                 break;
             case EnemyState.Turn:
+                animator.SetTrigger("Turn");
+                detectionZone.enabled = false;
                 targetRotation = transform.rotation * Quaternion.Euler(0, 180, 0);
                 turningTime = 0.5f;
                 StartCoroutine(RotateTowardsTarget(targetRotation, turningTime));
                 break;
             case EnemyState.LookClass:
+                detectionZone.enabled = false;
                 StartCoroutine(LookClassCoroutine());
                 animator.SetBool("NoClass", true);
                 break;
             case EnemyState.Angry:
-                Debug.Log("You Lose");
+                GameManager.GameLost = true;
+                LoseTimer.Instance._loseEvent?.Invoke();
+                _angryEvent?.Invoke();
+                transform.LookAt(PlayerMovement.Instance.transform.position);
                 animator.SetTrigger("Angry");
                 StopAllCoroutines();
+                break;
+            case EnemyState.Sad:
+                StartCoroutine(SadCoroutine());
                 break;
             default:
                 break;
@@ -135,6 +208,10 @@ public class EnemyStateMachine : MonoBehaviour
         switch (currentState)
         {
             case EnemyState.LookBoard:
+                if (playerInZone && !PlayerMovement.Instance._isCrouching)
+                {
+                    TransitionToState(EnemyState.Angry);
+                }
                 break;
             case EnemyState.Turn:
                 if (!isRotating)
@@ -150,8 +227,14 @@ public class EnemyStateMachine : MonoBehaviour
                 }
                 break;
             case EnemyState.LookClass:
+                if (!PlayerMovement.Instance._isSitting)
+                {
+                    TransitionToState(EnemyState.Angry);
+                }
                 break;
             case EnemyState.Angry:
+                break;
+            case EnemyState.Sad:
                 break;
             default:
                 break;
@@ -170,6 +253,8 @@ public class EnemyStateMachine : MonoBehaviour
                 animator.SetBool("NoClass", false);
                 break;
             case EnemyState.Angry:
+                break;
+            case EnemyState.Sad:
                 break;
             default:
                 break;

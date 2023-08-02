@@ -676,12 +676,12 @@ MonoBehaviour:
     Euler guy...
 
 
-    Find all the gears in the room to tamper the gearbox and make
-    the schoolbell ring.
+    Find all the gears in the room to tamper with the gearbox
+    and make the school bell ring.
 
 
-    But be carefull... Your time is running out before
-    you die of boredom.'
+    But be careful... Your time is running out
+    before you die of boredom.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9b84b2890a085c74db3e92a63750cd60, type: 2}
   m_sharedMaterial: {fileID: 7831202608524432069, guid: 9b84b2890a085c74db3e92a63750cd60,

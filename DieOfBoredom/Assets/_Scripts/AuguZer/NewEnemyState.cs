@@ -220,10 +220,12 @@ public class NewEnemyState : MonoBehaviour
                 {
                     if (previousState == EnemyState.LookBoard)
                     {
+                        animator.SetTrigger("LookClass");
                         TransitionToState(EnemyState.LookClass);
                     }
                     else
                     {
+                        animator.SetTrigger("LookBoard");
                         TransitionToState(EnemyState.LookBoard);
                     }
                 }
