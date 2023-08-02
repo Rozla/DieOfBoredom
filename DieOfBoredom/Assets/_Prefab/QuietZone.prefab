@@ -258,6 +258,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4110838025010265877}
+  - component: {fileID: 5639258760768156803}
+  - component: {fileID: 2659546424221981761}
   m_Layer: 0
   m_Name: QuietZone
   m_TagString: Untagged
@@ -284,6 +286,39 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &5639258760768156803
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7104788270887903730}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 15.605215, y: 1, z: 3.9974456}
+  m_Center: {x: -5.778385, y: 0, z: -0.016163588}
+--- !u!114 &2659546424221981761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7104788270887903730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06e47383aa5aed7469c2a42755d4f9fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7326610041576164755
 GameObject:
   m_ObjectHideFlags: 0

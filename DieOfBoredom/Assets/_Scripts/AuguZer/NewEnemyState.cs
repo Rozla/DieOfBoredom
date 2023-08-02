@@ -37,7 +37,7 @@ public class NewEnemyState : MonoBehaviour
     private bool isWaitingForTurn = false;
 
 
-    private bool playerInZone;
+    public bool playerInZone;
 
     public UnityEvent _angryEvent;
 
@@ -153,20 +153,6 @@ public class NewEnemyState : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "Player")
-        {
-           playerInZone = true;
-        }
-    }
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.tag == "Player")
-        {
-            playerInZone = false;
-        }
-    }
 
     private void OnStateEnter()
     {
