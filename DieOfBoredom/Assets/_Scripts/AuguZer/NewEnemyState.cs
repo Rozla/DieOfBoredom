@@ -28,7 +28,6 @@ public class NewEnemyState : MonoBehaviour
     private float lastTurnTime;
 
     //private PlayerMovement playerMovement;
-    private BoxCollider detectionZone;
     private Animator animator;
 
     private bool isRotating;
@@ -63,7 +62,6 @@ public class NewEnemyState : MonoBehaviour
 
         animator = GetComponentInChildren<Animator>();
         //playerMovement = FindObjectOfType<PlayerMovement>();
-        detectionZone = GetComponent<BoxCollider>();
     }
 
     private void Start()
@@ -159,7 +157,6 @@ public class NewEnemyState : MonoBehaviour
         switch (currentState)
         {
             case EnemyState.LookBoard:
-                detectionZone.enabled = true;
                 if (!isWaitingForTurn)
                 {
                     StartCoroutine(WaitForTurn());
@@ -167,13 +164,11 @@ public class NewEnemyState : MonoBehaviour
                 break;
             case EnemyState.Turn:
                 animator.SetTrigger("Turn");
-                detectionZone.enabled = false;
                 targetRotation = transform.rotation * Quaternion.Euler(0, 180, 0);
                 turningTime = 0.5f;
                 StartCoroutine(RotateTowardsTarget(targetRotation, turningTime));
                 break;
             case EnemyState.LookClass:
-                detectionZone.enabled = false;
                 StartCoroutine(LookClassCoroutine());
                 animator.SetBool("NoClass", true);
                 break;
