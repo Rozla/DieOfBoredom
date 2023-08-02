@@ -33,7 +33,7 @@ Transform:
   - {fileID: 8112257437244632011}
   - {fileID: 8219239825408555178}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &6625369169973833085
 BoxCollider:
@@ -443,7 +443,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.78
+  m_Radius: 1
   m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &6412815765339761405
 GameObject:
