@@ -10,8 +10,8 @@ public class BoxBehaviour : MonoBehaviour
 
     [SerializeField] AudioClip[] _boxClipsWrong;
     [SerializeField] AudioClip[] _boxClipsGood;
-    //[SerializeField] AudioClip winPnjVoice;
-    //[SerializeField] AudioClip winJingle;
+    [SerializeField] private GameObject psBox;
+    
 
 
     AudioSource _boxAudioSource;
@@ -34,6 +34,8 @@ public class BoxBehaviour : MonoBehaviour
     void Start()
     {
         _boxAudioSource = GetComponent<AudioSource>();
+        psBox.SetActive(false);
+        StartCoroutine(StartPSCoroutine());
     }
 
     // Update is called once per frame
@@ -85,10 +87,10 @@ public class BoxBehaviour : MonoBehaviour
         return _boxClipsWrong[Random.Range(0, _boxClipsWrong.Length)];
     }
 
-    //IEnumerator WinSoundCoroutine(AudioClip clip)
-    //{
-    //    yield return new WaitForSeconds(clip.length);
-    //    _boxAudioSource.PlayOneShot(winPnjVoice);
-    //    _boxAudioSource.PlayOneShot(winJingle);
-    //}  
+    IEnumerator StartPSCoroutine()
+    {
+        float index = Random.Range(2f, 6f);
+        yield return new WaitForSeconds(index);
+        psBox.SetActive(true);
+    }
 }
