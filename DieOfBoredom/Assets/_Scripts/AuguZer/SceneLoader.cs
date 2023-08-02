@@ -20,6 +20,7 @@ public class SceneLoader : MonoBehaviour
 
     UIGameBehaviour _uiGameScript;
 
+    public static bool inPause;
 
     private void Awake()
     {
@@ -79,14 +80,13 @@ public class SceneLoader : MonoBehaviour
                 Pause();
             }
         }
-        //Win();
-        //Loose();
     }
 
     private void Win()
     {
         if (GameManager.GameWin)
         {
+            inPause = true;
             winMenu.SetActive(true);
             UIplayer.SetActive(false);
         }
@@ -96,6 +96,7 @@ public class SceneLoader : MonoBehaviour
     {
         if (GameManager.GameLost)
         {
+            inPause = true;
             looseMenu.SetActive(true);
             UIplayer.SetActive(false);
         }
@@ -103,16 +104,19 @@ public class SceneLoader : MonoBehaviour
 
     public void LoadScene(int buildIndex)
     {
+        inPause = false;
         Time.timeScale = 1f;
         SceneManager.LoadScene(buildIndex);
     }
     public void NextLevel()
     {
+        inPause = false;
         LoadScene(_builtIndex + 1);
     }
 
     public void TryAgain()
     {
+        inPause = false;
         Time.timeScale = 1.0f;
         looseMenu.SetActive(false);
         _builtIndex = SceneManager.GetActiveScene().buildIndex;
@@ -121,6 +125,7 @@ public class SceneLoader : MonoBehaviour
     }
     public void Continue()
     {
+        inPause = false;
         Time.timeScale = 1f;
         if (pauseMenu.activeInHierarchy)
         {
@@ -135,6 +140,7 @@ public class SceneLoader : MonoBehaviour
 
     public void Pause()
     {
+        inPause = true;
         Time.timeScale = 0f;
         if (UIplayer != null)
         {

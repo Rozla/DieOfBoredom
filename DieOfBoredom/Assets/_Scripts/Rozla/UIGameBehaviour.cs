@@ -10,7 +10,7 @@ public class UIGameBehaviour : MonoBehaviour
     [SerializeField] EventSystem _eventSystem;
     PlayerInput _playerInput;
 
-
+    [SerializeField] GameObject _postureCanva;
 
     [Header("Pause Menu")]
     [SerializeField] Button _continueButton;
@@ -41,6 +41,7 @@ public class UIGameBehaviour : MonoBehaviour
         _playerInput.onControlsChanged += OnControlsChanged;
         _eventSystem.SetSelectedGameObject(_continueButton.gameObject);
 
+        Cursor.lockState = CursorLockMode.Confined;
 
         _loseTimerScript._loseEvent.AddListener(() =>
         {
@@ -53,6 +54,18 @@ public class UIGameBehaviour : MonoBehaviour
         });
     }
 
+    private void Update()
+    {
+        if (SceneLoader.inPause)
+        {
+            _postureCanva.SetActive(false);
+        }
+        else
+        {
+            _postureCanva.SetActive(true);
+        }
+    }
+
     void OnControlsChanged(UnityEngine.InputSystem.PlayerInput obj)
     {
         if (PlayerMovement.Instance == null) return;
@@ -62,12 +75,14 @@ public class UIGameBehaviour : MonoBehaviour
             _currentScheme = _knmScheme;
             _gamePadImg.SetActive(false);
             _knmImg.SetActive(true);
+            Cursor.visible = true;
         }
         if (_playerInput.currentControlScheme == _gamepadScheme)
         {
             _currentScheme = _gamepadScheme;
             _gamePadImg.SetActive(true);
             _knmImg.SetActive(false);
+            Cursor.visible = false;
         }
 
         if (_continueButton.isActiveAndEnabled)
